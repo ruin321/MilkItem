@@ -34,6 +34,13 @@ _release/
 *.bak3
 *.bak4
 
+# 开发杂项 / 独立 mod 源码（不属于 MilkItem 仓库）
+Show_Credits.reg
+TrimLogs.ps1
+TrimWarnings.ps1
+tools/
+_fastloader_src/
+
 # 系统/编辑器
 .DS_Store
 Thumbs.db
