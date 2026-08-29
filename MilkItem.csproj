@@ -83,6 +83,8 @@
     <Compile Remove="_fastloader_src/**/*.cs" />
     <Compile Remove="_fastloader_decomp/**/*.cs" />
     <None Remove="*.logbak" />
+    <None Remove="README.md" />
+    <None Remove="LICENSE" />
   </ItemGroup>
   <Target Name="DeployToGame" AfterTargets="Build">
     <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(GameRoot)/BepInEx/plugins/MilkItem/" />
