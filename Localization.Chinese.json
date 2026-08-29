@@ -1,0 +1,888 @@
+{
+  "items": [
+    {
+      "key": "ITM_Milk",
+      "value": "牛奶"
+    },
+    {
+      "key": "ITM_FakeMilk",
+      "value": "牛奶"
+    },
+    {
+      "key": "ITM_IceMilk",
+      "value": "冰！牛奶"
+    },
+    {
+      "key": "ITM_IceMilk_Desc",
+      "value": "冰！牛奶\n一桶冰凉的牛奶。\n喝下后在你周围制造一片冰域，持续 120 秒：\n区域内从天上下雪，任何进入区域的 NPC\n都会变成淡蓝色并减速，直到离开区域为止！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_IceMilk_Desc",
+      "value": "喝下后制造持续 120 秒的冰域：\n区域内下雪，NPC 变淡蓝并减速，离开后恢复"
+    },
+    {
+      "key": "ITM_TimeMilk",
+      "value": "时钟牛奶"
+    },
+    {
+      "key": "ITM_TimeMilk_Desc",
+      "value": "时钟牛奶\n在高级班的灶台上，用闹钟和普通牛奶合成。\n喝下立刻恢复 50% 体力并加速 10%！\n之后每 5 秒再回半点体力并保持加速，共 6 次（30 秒），\n最后一次加速还会多持续 5 秒。\n滴答——滴答——"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_TimeMilk_Desc",
+      "value": "喝下回 50% 体力并 +10% 加速；每 5 秒回半点体力，\n共 6 次（30 秒），末跳加速再持续 5 秒"
+    },
+    {
+      "key": "ITM_MooMilk",
+      "value": "牛\"奶"
+    },
+    {
+      "key": "ITM_MooMilk_Desc",
+      "value": "牛\"奶\n一桶来自特殊奶牛的牛奶。\n喝下恢复 150% 体力，且【不会】清除事件或 buff，\n并在原地召唤一头波兰牛！（有 30% 概率是发怒的）"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MooMilk_Desc",
+      "value": "恢复 150% 体力且不清除事件/buff，\n并在原地召唤一头波兰牛（30% 发怒）"
+    },
+    {
+      "key": "ITM_SilentMilk",
+      "value": "静音牛奶"
+    },
+    {
+      "key": "ITM_SilentMilk_Desc",
+      "value": "静音牛奶\n一杯特调的安静牛奶。\n喝下后保持 60 秒消音——你做什么都不会出声，\n除非被看到。效果结束后会减速 15 秒！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_SilentMilk_Desc",
+      "value": "60 秒内消音（除非被看到），结束后减速 15 秒"
+    },
+    {
+      "key": "ITM_Milk_Desc",
+      "value": "牛奶\n一桶新鲜牛奶。\n喝下可清除所有负面效果，\n并恢复 6~15 点体力！"
+    },
+    {
+      "key": "ITM_FakeMilk_Desc",
+      "value": "牛奶\n一桶新鲜牛奶……大概吧。\n喝下可清除所有负面效果，\n并恢复 6~15 点体力！（效果可能有所不同）"
+    },
+    {
+      "key": "ITM_FakeMilk_Reveal",
+      "value": "假牛奶？"
+    },
+    {
+      "key": "ITM_EmptyBucket",
+      "value": "空桶"
+    },
+    {
+      "key": "ITM_EmptyBucket_Desc",
+      "value": "空桶\n嗯……一个空桶……就这些。"
+    },
+    {
+      "key": "ITM_ChocolateMilk",
+      "value": "巧克力牛奶"
+    },
+    {
+      "key": "ITM_ChocolateMilk_Desc",
+      "value": "巧克力牛奶\n一桶巧克力牛奶。\n喝下恢复 300~400 点体力，\n并把所有随机事件的持续\n时间缩短到 2 秒！"
+    },
+    {
+      "key": "ITM_MilkSoda",
+      "value": "牛奶汽水"
+    },
+    {
+      "key": "ITM_MilkSoda_Desc",
+      "value": "牛奶汽水\n一罐牛奶味汽水。\n喝下恢复 10~100 点体力，\n并喷出牛奶冲击波，把碰到的\nNPC 击退 15 秒！"
+    },
+    {
+      "key": "ITM_DietMilkSoda",
+      "value": "无糖牛奶汽水"
+    },
+    {
+      "key": "ITM_DietMilkSoda_Desc",
+      "value": "无糖牛奶汽水\n一罐淡蓝色的无糖牛奶汽水。\n喝下恢复 20~60 点体力，\n并喷出短短的牛奶冲击波，把碰到\n的 NPC 击退 5 秒！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_DietMilkSoda_Desc",
+      "value": "恢复 20~60 点体力，并喷出\n短暂的牛奶冲击波，把 NPC\n击退 5 秒。"
+    },
+    {
+      "key": "ITM_CompressedMilk",
+      "value": "压缩牛奶"
+    },
+    {
+      "key": "ITM_CompressedMilk_Desc",
+      "value": "压缩牛奶\n一块加铁的浓缩牛奶。\n恢复 400 点体力，但会把你压扁\n并减速 20 秒——\n而且普通牛奶无法解除。你还会\n粘在门上（按住奔跑键挣脱）。"
+    },
+    {
+      "key": "ITM_PoisonMilk",
+      "value": "毒牛奶"
+    },
+    {
+      "key": "ITM_PoisonMilk_Desc",
+      "value": "毒牛奶\n一桶发臭的绿色液体。\n右键喝下：让自己中毒 30 秒\n（雾气+眩晕）。\n左键投掷：击中 NPC 后\n它们会狂暴 40 秒（随机旋转、\n耳聋、失明、冻结）。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_Milk_Desc",
+      "value": "一桶新鲜牛奶。\n喝下可清除所有负面效果，\n并恢复 6~15 点体力！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_EmptyBucket_Desc",
+      "value": "嗯……一个空桶……就这些。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_ChocolateMilk_Desc",
+      "value": "恢复 300~400 点体力，并把\n所有随机事件的持续时间\n缩短到 2 秒。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkSoda_Desc",
+      "value": "恢复 10~100 点体力，并喷出\n牛奶冲击波，把 NPC 击退\n15 秒。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_CompressedMilk_Desc",
+      "value": "恢复 400 点体力，但会把玩家\n压扁+减速 20 秒（牛奶无法解除），\n并会粘在门上。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_PoisonMilk_Desc",
+      "value": "右键喝下：让自己中毒 30 秒\n（雾气+眩晕）。左键投掷：\n击中 NPC 后它们会狂暴 40 秒。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_AppleMilk_Desc",
+      "value": "带着它，Baldi 可能会抢走它\n而不是结束你的游戏！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_ReverseMilk_Desc",
+      "value": "喝下后你会上下颠倒——\n在天花板上行走，NPC 碰不到你！\n一个实用的逃跑工具。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_WindowMilk_Desc",
+      "value": "喝下后游戏会退出全屏，\n变成一扇从屏幕底部不断掉落、\n又从顶部出现的窗口。混乱。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_99Milk_Desc",
+      "value": "一瓶神秘的“99”牛奶。\n它的隐藏效果还未确定……"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_Mi_Desc",
+      "value": "一种弱牛奶：恢复 1~4 点体力，\n并解除被压扁状态。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_Lk_Desc",
+      "value": "一种弱牛奶：恢复 1~4 点体力，\n并解除被压扁状态。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RottenMilk_Desc",
+      "value": "右键使用：在脚下丢出一个\n发臭的桶；NPC 在 125 秒内\n不会靠近它。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RandomMilk_Desc",
+      "value": "放在关卡编辑器里；进游戏后\n它总会变成随机牛奶。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RandomMilkNoItem_Desc",
+      "value": "放在关卡编辑器里；进游戏后\n变成随机牛奶，但 50% 几率\n什么都没有。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RandomMilk75_Desc",
+      "value": "放在关卡编辑器里；进游戏后\n几乎总是给不到东西，\n极少变成随机牛奶。"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_QuarterMilk_Desc",
+      "value": "喝下后 30 秒内移动速度减半，\n但会原地掉出 4 枚硬币！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_BusPassMilk_Desc",
+      "value": "喝下后清空所有效果并恢复体力，\n还会原地掉出一张公车票！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_KEY_Desc",
+      "value": "一把形状奇特的钥匙，\n可以打开第 5 层那扇特殊的锁门。"
+    },
+    {
+      "key": "Ed_Tool_room_milk_room_Title",
+      "value": "牛奶房！"
+    },
+    {
+      "key": "Ed_Tool_room_milk_room_Desc",
+      "value": "哇！牛奶房！听说里面会刷牛奶？\n真的假的？试试看就知道了！"
+    },
+    {
+      "key": "Ed_Tool_room_cold_room_Title",
+      "value": "冷藏房！"
+    },
+    {
+      "key": "Ed_Tool_room_cold_room_Desc",
+      "value": "好冷！一间冰封的房间。\n墙壁是冰做的，门也像冬天一样\n冰凉。小心别冻着！"
+    },
+    {
+      "key": "Ed_Tool_room_99room_Title",
+      "value": "99"
+    },
+    {
+      "key": "Ed_Tool_room_99room_Desc",
+      "value": "99"
+    },
+    {
+      "key": "Ed_Tool_room_hot_room_Title",
+      "value": "炎热房"
+    },
+    {
+      "key": "Ed_Tool_room_hot_room_Desc",
+      "value": "好热！屏幕泛红，你也会加速——\n但待太久，包里的牛奶会变质\n成腐烂牛奶！"
+    },
+    {
+      "key": "Ed_Tool_room_milk_machine_classroom_Title",
+      "value": "牛奶机教室"
+    },
+    {
+      "key": "Ed_Tool_room_milk_machine_classroom_Desc",
+      "value": "一间带牛奶机的教室。\n进游戏会生成牛奶机提示牌，\n每轮只生成一次。"
+    },
+    {
+      "key": "Vfx_Drink",
+      "value": "[喝下]"
+    },
+    {
+      "key": "ACH_Milk_Name",
+      "value": "新鲜牛奶"
+    },
+    {
+      "key": "ACH_Milk_Desc",
+      "value": "喝下一桶牛奶，清除所有\n负面效果。"
+    },
+    {
+      "key": "ACH_Rotten_Name",
+      "value": "呃……好臭……"
+    },
+    {
+      "key": "ACH_Rotten_Desc",
+      "value": "用腐烂牛奶，用臭味\n封锁一片区域。"
+    },
+    {
+      "key": "ACH_SodaPush_Name",
+      "value": "飞走吧！"
+    },
+    {
+      "key": "ACH_SodaPush_Desc",
+      "value": "用牛奶汽水喷射\n击退一个 NPC。"
+    },
+    {
+      "key": "ACH_Choco_Name",
+      "value": "巧克力过载"
+    },
+    {
+      "key": "ACH_Choco_Desc",
+      "value": "喝下巧克力牛奶，恢复\n大量体力。"
+    },
+    {
+      "key": "ACH_Soda_Name",
+      "value": "滋滋升腾饮"
+    },
+    {
+      "key": "ACH_Soda_Desc",
+      "value": "喝下一罐牛奶汽水。"
+    },
+    {
+      "key": "ACH_Compressed_Name",
+      "value": "被压扁了！"
+    },
+    {
+      "key": "ACH_Compressed_Desc",
+      "value": "喝下压缩牛奶，\n把自己压扁。"
+    },
+    {
+      "key": "ACH_Reverse_Name",
+      "value": "上下颠倒"
+    },
+    {
+      "key": "ACH_Reverse_Desc",
+      "value": "喝下反转牛奶，\n上下颠倒。"
+    },
+    {
+      "key": "ACH_Window_Name",
+      "value": "窗口坠落"
+    },
+    {
+      "key": "ACH_Window_Desc",
+      "value": "喝下窗口牛奶，\n让游戏窗口坠落。"
+    },
+    {
+      "key": "ACH_Quarter_Name",
+      "value": "硬币雨"
+    },
+    {
+      "key": "ACH_Quarter_Desc",
+      "value": "喝下硬币牛奶，减速并\n掉出一些硬币。"
+    },
+    {
+      "key": "ACH_Apple_Name",
+      "value": "一天一苹果……"
+    },
+    {
+      "key": "ACH_Apple_Desc",
+      "value": "喝下一瓶苹果牛奶。"
+    },
+    {
+      "key": "ACH_Ytps_Name",
+      "value": "叮铃铃！"
+    },
+    {
+      "key": "ACH_Ytps_Desc",
+      "value": "喝下 YTP 牛奶，获得\n“你以为”点数。"
+    },
+    {
+      "key": "ACH_LostBilk_Name",
+      "value": "失物招领"
+    },
+    {
+      "key": "ACH_LostBilk_Desc",
+      "value": "喝下一盒迷失牛奶。"
+    },
+    {
+      "key": "ACH_Poison_Name",
+      "value": "你为什么……"
+    },
+    {
+      "key": "ACH_Poison_Desc",
+      "value": "喝下一瓶毒牛奶。"
+    },
+    {
+      "key": "ACH_99_Name",
+      "value": "秘密配方"
+    },
+    {
+      "key": "ACH_99_Desc",
+      "value": "喝下隐藏的 99 牛奶。"
+    },
+    {
+      "key": "ACH_QuizWin_Name",
+      "value": "牛奶学霸"
+    },
+    {
+      "key": "ACH_QuizWin_Desc",
+      "value": "答对答题机的问题。"
+    },
+    {
+      "key": "ACH_QuizFail_Name",
+      "value": "牛奶脑"
+    },
+    {
+      "key": "ACH_QuizFail_Desc",
+      "value": "答错答题机的问题。"
+    },
+    {
+      "key": "ACH_MooMystery_Name",
+      "value": "这里是哪里？"
+    },
+    {
+      "key": "ACH_MooMystery_Desc",
+      "value": "解锁神秘的隐藏层「？？？」。"
+    },
+    {
+      "key": "ACH_MooLey_Name",
+      "value": "这不对劲"
+    },
+    {
+      "key": "ACH_MooLey_Desc",
+      "value": "解锁唤起的F1楼层。"
+    },
+    {
+      "key": "ACH_MooCredit_Name",
+      "value": "感谢你的游玩"
+    },
+    {
+      "key": "ACH_MooCredit_Desc",
+      "value": "播放制作人员名单。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster",
+      "value": "牛奶海报"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster",
+      "value": "送你一杯免费牛奶！"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster2",
+      "value": "牛奶海报 2"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster2",
+      "value": "喝牛奶有益健康！"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster3",
+      "value": "牛奶海报 3"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster3",
+      "value": "牛奶健康又好喝！\n来喝一杯吧！"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster4",
+      "value": "牛奶海报 4"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster4",
+      "value": "你知道吗？\n一瓶牛奶也有自己的梦想。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster10",
+      "value": "牛奶海报 10"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster10",
+      "value": "又一杯牛奶，\n收入收藏！"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster11",
+      "value": "牛奶海报 11"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster11",
+      "value": "牛奶：现在口味更多了。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster12",
+      "value": "牛奶海报 12"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster12",
+      "value": "保持水分。喝牛奶。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster13",
+      "value": "牛奶海报 13"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster13",
+      "value": "保持水分。喝牛奶。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster17",
+      "value": "牛奶海报 17"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster17",
+      "value": "来自牛奶工厂的新鲜货！"
+    },
+    {
+      "key": "Ed_Poster_Title_ChalkMilk1",
+      "value": "粉笔牛奶 1"
+    },
+    {
+      "key": "Ed_Poster_Desc_ChalkMilk1",
+      "value": "从黑板上直接抠下来的\n粉笔牛奶！"
+    },
+    {
+      "key": "Ed_Poster_Title_ChalkMilk2",
+      "value": "粉笔牛奶 2"
+    },
+    {
+      "key": "Ed_Poster_Desc_ChalkMilk2",
+      "value": "今天的课：牛奶就是一切。"
+    },
+    {
+      "key": "Ed_Poster_Title_PolishCowPoster",
+      "value": "波兰牛"
+    },
+    {
+      "key": "Ed_Poster_Desc_PolishCowPoster",
+      "value": "一头游荡的波兰牛。\n它什么都不做，只是走来走去\n播放音乐。"
+    },
+    {
+      "key": "Ed_Tool_object_MilkVendingMachine_Title",
+      "value": "牛奶贩卖机"
+    },
+    {
+      "key": "Ed_Tool_object_MilkVendingMachine_Desc",
+      "value": "投入两枚硬币，\n获得一桶新鲜牛奶！"
+    },
+    {
+      "key": "Ed_Tool_object_MilkSodaVendingMachine_Title",
+      "value": "牛奶汽水贩卖机"
+    },
+    {
+      "key": "Ed_Tool_object_MilkSodaVendingMachine_Desc",
+      "value": "投入两枚硬币，\n获得一罐牛奶汽水！"
+    },
+    {
+      "key": "ITM_AppleMilk",
+      "value": "苹果牛奶"
+    },
+    {
+      "key": "ITM_AppleMilk_Desc",
+      "value": "苹果牛奶\n一瓶苹果味牛奶。\n带着它，Baldi 可能会抢走它\n而不是结束你的游戏！"
+    },
+    {
+      "key": "ITM_ReverseMilk",
+      "value": "反转牛奶"
+    },
+    {
+      "key": "ITM_ReverseMilk_Desc",
+      "value": "反转牛奶\n一瓶看着可疑的牛奶。\n喝下后你会上下颠倒——\n在天花板上行走，NPC 碰不到你！\n一个实用的逃跑工具。"
+    },
+    {
+      "key": "ITM_WindowMilk",
+      "value": "窗口牛奶"
+    },
+    {
+      "key": "ITM_WindowMilk_Desc",
+      "value": "窗口牛奶\n一瓶整蛊牛奶。\n喝下后游戏退出全屏，\n变成一扇不断从屏幕底部掉落、\n又从顶部出现的窗口！"
+    },
+    {
+      "key": "ITM_99Milk",
+      "value": "99"
+    },
+    {
+      "key": "ITM_99Milk_Desc",
+      "value": "99"
+    },
+    {
+      "key": "ITM_Mi",
+      "value": "牛"
+    },
+    {
+      "key": "ITM_Mi_Desc",
+      "value": "牛\n一种弱牛奶。\n恢复 1~4 点体力，\n并解除被压扁状态。"
+    },
+    {
+      "key": "ITM_Lk",
+      "value": "奶"
+    },
+    {
+      "key": "ITM_Lk_Desc",
+      "value": "奶\n一种弱牛奶。\n恢复 1~4 点体力，\n并解除被压扁状态。"
+    },
+    {
+      "key": "ITM_RottenMilk",
+      "value": "腐烂牛奶"
+    },
+    {
+      "key": "ITM_RottenMilk_Desc",
+      "value": "腐烂牛奶\n一桶变质的臭牛奶。\n右键丢在脚下；\nNPC 在 125 秒内不会靠近\n这股臭味。"
+    },
+    {
+      "key": "ITM_RandomMilk",
+      "value": "随机牛奶"
+    },
+    {
+      "key": "ITM_RandomMilk_Desc",
+      "value": "随机牛奶\n一瓶神秘牛奶。\n放在关卡编辑器里；进游戏后\n它总会变成随机种类的牛奶！"
+    },
+    {
+      "key": "ITM_RandomMilkNoItem",
+      "value": "随机牛奶（可能无物品）"
+    },
+    {
+      "key": "ITM_RandomMilkNoItem_Desc",
+      "value": "随机牛奶（可能无物品）\n一瓶更冒险的神秘牛奶。\n50% 几率变成随机牛奶，\n50% 几率你什么也得不到！"
+    },
+    {
+      "key": "ITM_RandomMilk75",
+      "value": "随机牛奶（75% 无物品）"
+    },
+    {
+      "key": "ITM_RandomMilk75_Desc",
+      "value": "随机牛奶（75% 无物品）\n一瓶极冒险的神秘牛奶。\n大多时候你什么也得不到，\n偶尔会变成随机牛奶！"
+    },
+    {
+      "key": "ITM_LostBILK",
+      "value": "迷失牛奶"
+    },
+    {
+      "key": "ITM_LostBILK_Desc",
+      "value": "迷失牛奶\n一盒走失、与牛群失散的牛奶。\n它是迷失物品——捡起来像普通\n牛奶一样喝下，照样管用！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_LostBILK_Desc",
+      "value": "一盒迷失的牛奶。放在关卡编辑器\n里；进游戏后像普通牛奶物品\n一样使用，只是有点孤单。"
+    },
+    {
+      "key": "ITM_MilkYtps",
+      "value": "YTP 牛奶"
+    },
+    {
+      "key": "ITM_MilkYtps_Desc",
+      "value": "YTP 牛奶\n一个发光的 YTP 能量十字。\n捡起立即获得 75~125 点 YTP，\n并恢复 50~75% 体力（上限 200）！"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkYtps_Desc",
+      "value": "捡起自动使用：获得 75~125 点\nYTP，并恢复 50~75% 体力（上限 200）。"
+    },
+    {
+      "key": "Baldi_AppleMilk",
+      "value": "一瓶苹果？给我的？谢谢！"
+    },
+    {
+      "key": "Baldi_MooOut",
+      "value": "噢不！我的牛跑出来了！它们气坏了……不过过一会儿就会消失的！"
+    },
+    {
+      "key": "Baldi_LotsOfMilk",
+      "value": "大家注意！看来今年的产量又提高了，走廊里满是牛奶，尽情享受吧！"
+    },
+    {
+      "key": "Hi! Would you buy some milk?",
+      "value": "嗨！要买点牛奶吗？"
+    },
+    {
+      "key": "It's only cost...",
+      "value": "只要这个价……"
+    },
+    {
+      "key": "Oh, forget about it...",
+      "value": "哦，那就算了……"
+    },
+    {
+      "key": "Oh, looks like you don't have enough money to buy my milk.",
+      "value": "哦，看起来你没钱买我的牛奶。"
+    },
+    {
+      "key": "Ok, I'll give you a free one.",
+      "value": "好吧，我免费送你一罐。"
+    },
+    {
+      "key": "Milk_PolishCow_Title",
+      "value": "波兰牛"
+    },
+    {
+      "key": "Milk_PolishCow_Desc",
+      "value": "波兰牛\n一头游荡的波兰牛。\n它什么都不做，只是走来走去\n播放音乐。"
+    },
+    {
+      "key": "Ed_Tool_Milk_PolishCow_Title",
+      "value": "波兰牛"
+    },
+    {
+      "key": "Ed_Tool_Milk_PolishCow_Desc",
+      "value": "一头游荡的波兰牛。\n它什么都不做，只是走来走去\n播放音乐。"
+    },
+    {
+      "key": "Milk_Salesman_Title",
+      "value": "牛奶售货员"
+    },
+    {
+      "key": "Milk_Salesman_Desc",
+      "value": "牛奶售货员\n一个四处游走的牛奶售货员。\n走近他，他就会停下送你免费牛奶——\n等等，为什么是免费的？"
+    },
+    {
+      "key": "Ed_Tool_Milk_Salesman_Title",
+      "value": "牛奶售货员"
+    },
+    {
+      "key": "Ed_Tool_Milk_Salesman_Desc",
+      "value": "一个四处游走的牛奶售货员。走近他\n就会送你一瓶免费随机牛奶。"
+    },
+    {
+      "key": "Ed_Tool_activity_MilkMachine_Title",
+      "value": "牛奶机"
+    },
+    {
+      "key": "Ed_Tool_activity_MilkMachine_Desc",
+      "value": "投入三个空桶，\n换出一本笔记本！"
+    },
+    {
+      "key": "Ed_Tool_object_RandomMilkVendingMachine_Title",
+      "value": "随机牛奶贩卖机"
+    },
+    {
+      "key": "Ed_Tool_object_RandomMilkVendingMachine_Desc",
+      "value": "投入两枚硬币，\n获得随机牛奶！"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster5",
+      "value": "牛奶海报 5"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster5",
+      "value": "牛奶：早餐、午餐\n和晚餐都合适。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster6",
+      "value": "牛奶海报 6"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster6",
+      "value": "有牛奶吗？我们希望如此。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster7",
+      "value": "牛奶海报 7"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster7",
+      "value": "每头牛都梦想成为一张\n精美的牛奶海报。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster8",
+      "value": "牛奶海报 8"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster8",
+      "value": "钙：现已推出海报版。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster9",
+      "value": "牛奶海报 9"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster9",
+      "value": "喝牛奶，兴旺发达。"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster_Random",
+      "value": "随机牛奶海报"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster_Random",
+      "value": "玩这关时会显示\n一张随机牛奶海报！"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster_RandomNoItem",
+      "value": "随机牛奶海报（可能无海报）"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster_RandomNoItem",
+      "value": "50% 几率显示随机牛奶海报，\n50% 几率为空白（空墙）！"
+    },
+    {
+      "key": "Ed_MilkMenu",
+      "value": "牛奶"
+    },
+    {
+      "key": "Ed_Tool_object_ColdDoor_Title",
+      "value": "寒冰门"
+    },
+    {
+      "key": "Ed_Tool_object_ColdDoor_Desc",
+      "value": "穿过去会感到一阵寒意！\n屏幕结上蓝霜，你减速\n30 秒。"
+    },
+    {
+      "key": "Ed_Tool_object_SnowZone_Title",
+      "value": "雪区"
+    },
+    {
+      "key": "Ed_Tool_object_SnowZone_Desc",
+      "value": "放置它来划出一片矩形区域，\n里面会持续下雪。"
+    },
+    {
+      "key": "Vfx_YTPPickup",
+      "value": "[YTP！]"
+    },
+    {
+      "key": "ITM_QuarterMilk",
+      "value": "硬币牛奶"
+    },
+    {
+      "key": "ITM_QuarterMilk_Desc",
+      "value": "硬币牛奶\n一瓶以硬币为主题的牛奶。\n喝下后你以半速移动 30 秒——\n但在你站的地方会弹出 4 枚硬币！\n还算公平吧？"
+    },
+    {
+      "key": "StickerTitle_BILK",
+      "value": "BILK"
+    },
+    {
+      "key": "StickerDescription_BILK",
+      "value": "每个房间。都是。答题。牛奶。房。\n本层所有房间都被强制替换成\n答题牛奶教室，你还能获得 5 倍 YTP。\n（只在楼层生成前生效。）"
+    },
+    {
+      "key": "StickerTitle_baldishh",
+      "value": "光头啥"
+    },
+    {
+      "key": "StickerDescription_baldishh",
+      "value": "嘘……别念出来。\nBaldi 的听力受损，发不出声音。\n好牛奶和好物品的出现率翻倍。"
+    },
+    {
+      "key": "StickerTitle_PolishCow",
+      "value": "波兰牛"
+    },
+    {
+      "key": "StickerDescription_PolishCow",
+      "value": "牛群进了走廊……而且很吵。\n几头牛会生成在走廊里。\n任何 NPC（和你！）离牛越近，\n大家的听力就越差。"
+    },
+    {
+      "key": "StickerTitle_AngryPolishCow",
+      "value": "愤怒的波兰牛"
+    },
+    {
+      "key": "StickerDescription_AngryPolishCow",
+      "value": "它们一点也不高兴。\n几头愤怒的狂奔牛会生成在走廊里，\n到处乱冲，碰到你（和 NPC）\n就会把人创飞。\n（只在楼层生成前生效。）"
+    },
+    {
+      "key": "StickerTitle_MilkBonus",
+      "value": "牛奶好牛"
+    },
+    {
+      "key": "StickerDescription_MilkBonus",
+      "value": "牛奶让人更强壮……和更有钱。\n你在本局喝下的每一瓶牛奶，\n通关最终结算时都会多给 5 个 YTP。\n（作答、让巴迪喝苹果奶都算。）"
+    },
+    {
+      "key": "ITM_KEY",
+      "value": "钥匙"
+    },
+    {
+      "key": "ITM_KEY_Desc",
+      "value": "钥匙\n一把形状古怪的钥匙。\n它能打开第 5 层那扇\n特殊的锁着的门。"
+    },
+    {
+      "key": "ITM_BusPassMilk",
+      "value": "公车票牛奶"
+    },
+    {
+      "key": "ITM_BusPassMilk_Desc",
+      "value": "公车票牛奶\n一盒贴着公车票的牛奶。\n喝下后清除所有状态并回复 6-15 体力，\n然后在你站的地方掉出\n一张公车票！"
+    },
+    {
+      "key": "Mu_About_Title",
+      "value": "牛奶更新！"
+    },
+    {
+      "key": "Mu_About_Body",
+      "value": "嗨，Baldi's Basics Plus 的模组玩家们！\n\n感谢游玩本次牛奶分支更新！这次更新专注于一些生活质量改进——以及一些别的东西……牛奶！\n最大的变化是牛奶在功能与外观上都得到了重做。最重要的是？牛奶现在有了全新的效果——记得亲自试试。\n\n……\n\n嘿。这牛奶是从哪来的?\n\n糟了。\n\n牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶牛奶。\n\n—— Micah McGonigal，2026年8月"
+    },
+    {
+      "key": "Mu_MainTitle",
+      "value": "Milk's Basics Plus"
+    },
+    {
+      "key": "Mu_Tip_0",
+      "value": "喝下一瓶牛奶，能一口气清光所有负面效果！"
+    },
+    {
+      "key": "Mu_Tip_1",
+      "value": "把牛奶留到关键时刻——它能帮你把一切麻烦抹掉。"
+    },
+    {
+      "key": "Mu_Tip_2",
+      "value": "牛奶汽水能把 NPC 喷飞。保持距离——也给自己留一罐。"
+    },
+    {
+      "key": "Mu_Tip_3",
+      "value": "如果奶牛找你做买卖……快跑。"
+    },
+    {
+      "key": "Mu_Tip_4",
+      "value": "没错，牛奶现在才是这游戏的主角。"
+    },
+    {
+      "key": "Mu_Tip_5",
+      "value": "压缩牛奶能回满体力，但会让你粘在门上。按住冲刺挣脱！"
+    },
+    {
+      "key": "Mu_Tip_6",
+      "value": "巧克力牛奶能瞬间结束恐怖事件。甜美的解脱。"
+    },
+    {
+      "key": "Mu_Tip_7",
+      "value": "仅剩 99 瓶……这一瓶归我。"
+    },
+    {
+      "key": "Mu_Tip_8",
+      "value": "牛奶还记得你上一层楼做过什么。"
+    },
+    {
+      "key": "Mu_Tip_9",
+      "value": "适量饮用。没人喜欢被打翻的牛奶。"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# 构建产物
+bin/
+obj/
+*.user
+
+# 参考/反编译/临时诊断目录（非本 mod 源码）
+_game_decomp/
+_ref_decomp/
+_api_decomp/
+_ed_decomp/
+_bbadvanced_decomp/
+_fastloader_decomp/
+_diagproj/
+_loc_tmp/
+_nocomment_bak/
+
+# 临时/备份源码文件
+_tmp_*.cs
+_diag.cs
+_adv_dump/
+
+# 构建备份 / 日志 / 助手记忆
+build_backups/
+.workbuddy/
+build.log
+*.log
+
+# 打包产物与备份
+_release/
+*.zip
+*.logbak
+*.bak
+*.bak2
+*.bak3
+*.bak4
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db

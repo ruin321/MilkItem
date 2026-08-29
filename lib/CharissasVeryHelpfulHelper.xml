@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CharissasVeryHelpfulHelper</name>
+    </assembly>
+    <members>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddNPCToPremadeLevel(SceneObject,NPC,IntVector2)">
+            <summary>
+            Adds a NPC to a pre-made level/sceneobject. It is recommended for you to use Pinedebug to find the position of where the NPC should spawn, you can do this by turning on Player debug info and viewing the grid position info
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddPosterToPremadeLevel(SceneObject,PosterObject,IntVector2,Direction)">
+            <summary>
+            Adds a Poster to a pre-made level/sceneobject. It is recommended for you to use Pinedebug to find the position and direction of where the poster should spawn, you can do this by turning on Player debug info and viewing the grid position and direction facing info
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddRoomToPremadeLevel(SceneObject,RoomAsset,IntVector2,Direction,Door,IntVector2,Direction,System.Int32,System.Int32)">
+            <summary>
+            Adds a Room to a pre-made level/sceneobject. It is recommended for you to use Pinedebug to find the position and direction of where the poster should spawn, you can do this by turning on Player debug info and viewing the grid position and direction facing info
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddMatchMachineBalloon(UnityEngine.Sprite)">
+            <summary>
+            Adds Match balloons which can appear during regular Match Machine solving, recommended value for the Pixel Per Unit is about 30. assuming it's a 128 x 256 sprite
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddNotebook(UnityEngine.Sprite)">
+            <summary>
+            Adds a potential Notebook Texture which can appear during regular gameplay, recommended value for the Pixel Per Unit is about 85, assuming it's a 101 x 128 sprite
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.SetCharacterToBreakWindow(Character)">
+            <summary>
+            Allows a Character to break a window if they come into contact with one, do note that this doesn't mean they'll path THROUGH windows. That needs to be done manually.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.SetCharacterToBreakWindow(NPC)">
+            <summary>
+            Allows a Character to break a window if they come into contact with one, do note that this doesn't mean they'll path THROUGH windows. That needs to be done manually.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddPrincipalRule(System.String,SoundObject)">
+            <summary>
+            Adds a new rule which the Principal will scold the Player for breaking.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.FindResourceOfName``1(System.String)">
+            <summary>
+            Easily finds an object by their name
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.TurnAudioClipintoSoundObject(System.String,SoundType,UnityEngine.Color,UnityEngine.AudioClip,MTM101BaldAPI.AssetTools.AssetManager,System.Boolean)">
+            <summary>
+            Turns an audio clip into a sound object
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeSound(System.String,System.String,SoundType,UnityEngine.Color,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String,System.Boolean)">
+            <summary>
+            Checks a folder for a sound and adds it to your mod's AssetManager
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeSoundAdvanced(System.String[],System.String,SoundType,UnityEngine.Color,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String,System.Boolean)">
+            <summary>
+            Checks a folder for a sound and adds it to your mod's AssetManager, using a more advanced system that allows you to check multiple folders
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeTexture2D(System.String,System.String,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String)">
+            <summary>
+            Checks a folder for a texture and adds it to your mod's AssetManager
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeTexture2DAdvanced(System.String[],System.String,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String)">
+            <summary>
+            Checks a folder for a texture and adds it to your mod's AssetManager, using a more advanced system that allows you to check multiple folders
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.TurnTextureintoSprite(System.String,UnityEngine.Texture2D,System.Single,MTM101BaldAPI.AssetTools.AssetManager)">
+            <summary>
+            Turns a texture into a sprite
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeSprite(System.String,System.String,System.Single,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String)">
+            <summary>
+            Checks a folder for a sprite and adds it to your mod's AssetManager
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeSpriteModifiedCenter(System.String,System.String,System.Single,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,UnityEngine.Vector2,System.String)">
+            <summary>
+            Checks a folder for a sprite and adds it to your mod's AssetManager, as well as letting them modifiy where the center is.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeSpriteAdvanced(System.String[],System.String,System.Single,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String)">
+            <summary>
+            Checks a folder for a sprite and adds it to your mod's AssetManager, using a more advanced system that allows you to check multiple folders
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeSpriteAdvancedModifiedCenter(System.String[],System.String,System.Single,BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,UnityEngine.Vector2,System.String)">
+            <summary>
+            Checks a folder for a sprite and adds it to your mod's AssetManager, as well as letting them modifiy where the center is, using a more advanced system that allows you to check multiple folders
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddWeightedItem(MTM101BaldAPI.CustomLevelObject,ItemObject,System.Int32)">
+            <summary>
+            Adds an item to generation.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddItemtoShop(SceneObject,ItemObject,System.Int32)">
+            <summary>
+            Adds an item to shop generation.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddItemtoVendingMachine(SodaMachine,ItemObject,System.Int32)">
+            <summary>
+            Adds an item to a vending machine, recommended for adding an item to a Crazy Machine
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddItemtoPartyEvent(ItemObject,System.Int32)">
+            <summary>
+            Adds an item to the Party Event pool
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddItemtoMysteryEvent(ItemObject,System.Int32)">
+            <summary>
+            Adds an item to the Mystery Event pool
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddSticker(SceneObject,Sticker,System.Int32)">
+            <summary>
+            Adds a sticker to generation.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddNPC(SceneObject,NPC,System.Int32)">
+            <summary>
+            Adds a NPC to generation.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddEvent(MTM101BaldAPI.CustomLevelObject,RandomEvent,System.Int32)">
+            <summary>
+            Adds an event to generation.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeDoorMats(System.String,System.String,UnityEngine.Texture2D,UnityEngine.Texture2D,MTM101BaldAPI.AssetTools.AssetManager)">
+            <summary>
+            Easily makes a door mat and adds it to your mod's AssetManager, which can then be assigned to a room
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.CreateSwingDoor(UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture2D,System.String,MTM101BaldAPI.AssetTools.AssetManager,UnityEngine.Texture2D,SoundObject,SoundObject,SoundObject,System.Boolean)">
+            <summary>
+            Easily makes a swinging door and adds it to your mod's AssetManager as well as Level Loader
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeWeightedRooms(System.String[],System.Collections.Generic.List{WeightedRoomAsset})">
+            <summary>
+            Easily makes a list of weighted room assets.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeWindows(MTM101BaldAPI.AssetTools.AssetManager,System.String,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Boolean,System.Boolean)">
+            <summary>
+            Easily makes windows and adds it to your mod's AssetManager as well as Level Loader
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeLight(System.String,MTM101BaldAPI.AssetTools.AssetManager,UnityEngine.Sprite)">
+            <summary>
+            Easily makes a light and adds it to your mod's AssetManager and Level Loadedr
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeLostItem(ItemObject)">
+            <summary>
+            Easily makes a lost item
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeShapeKey(BepInEx.BaseUnityPlugin,MTM101BaldAPI.AssetTools.AssetManager,System.String,UnityEngine.Texture2D,System.String,System.String,UnityEngine.Sprite,UnityEngine.Sprite)">
+            <summary>
+            Makes a shape key and adds it to your mod's AssetManager and Level Loader
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakePicQuickNicFood(System.Collections.Generic.List{UnityEngine.Sprite})">
+            <summary>
+            Adds a list of sprites to Pic-Quick-Nic
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeGoodCampfireFrenzyFuel(System.Collections.Generic.List{WeightedSprite})">
+            <summary>
+            Adds a list of weighted sprites which are considered "good fuel" to Campfire Frenzy
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeBadCampfireFrenzyFuel(System.Collections.Generic.List{WeightedSprite})">
+            <summary>
+            Adds a list of weighted sprites which are considered "bad fuel" to Campfire Frenzy
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.GiveCharacterGroupofMetaTag(Character,System.Collections.Generic.List{System.String})">
+            <summary>
+            Gives a character a group of meta tags
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.GiveGroupofCharactersMetaTag(System.Collections.Generic.List{Character},System.String)">
+            <summary>
+            Gives group of characters a single meta tag
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.GiveGroupofCharactersGroupofMetaTag(System.Collections.Generic.List{Character},System.Collections.Generic.List{System.String})">
+            <summary>
+            Gives group of characters a group of meta tags
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.GiveItemsGroupofMetaTag(Items,System.Collections.Generic.List{System.String})">
+            <summary>
+            Gives an item a group of meta tags
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.GiveGroupofItemsMetaTag(System.Collections.Generic.List{Items},System.String)">
+            <summary>
+            Gives group of items a meta tag
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.GiveGroupofItemsGroupofMetaTag(System.Collections.Generic.List{Items},System.Collections.Generic.List{System.String})">
+            <summary>
+            Gives group of items a group of meta tags
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeBasicObject(System.String,UnityEngine.Sprite,MTM101BaldAPI.AssetTools.AssetManager)">
+            <summary>
+            Makes a basic object for modders to use and adds it to your mod's AssetManager as well as level loader
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddHallTextures(System.Collections.Generic.List{WeightedTexture2D},System.Collections.Generic.List{WeightedTexture2D},System.Collections.Generic.List{WeightedTexture2D},MTM101BaldAPI.CustomLevelObject,System.Boolean)">
+            <summary>
+            Adds hallway textures, as well as room textures
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddActvitiesToFloors(System.String,System.Collections.Generic.List{WeightedRoomAsset},System.Int32,MTM101BaldAPI.CustomLevelObject,SceneObject)">
+            <summary>
+            Adds custom activity rooms to generation.
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddPosterToLevel(MTM101BaldAPI.CustomLevelObject,PosterObject,System.Int32)">
+            <summary>
+            Adds singular poster to generation
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddPostersToLevel(MTM101BaldAPI.CustomLevelObject,System.Collections.Generic.List{PosterObject})">
+            <summary>
+            Adds group of posters to generation
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.AddNewRoomGroupToLevel(System.String,System.Int32,System.Int32,System.Single,MTM101BaldAPI.CustomLevelObject,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Transform,WeightedRoomAsset[])">
+            <summary>
+            Adds new room group to generation
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeTree(MTM101BaldAPI.AssetTools.AssetManager,UnityEngine.Texture2D,System.String)">
+            <summary>
+            Makes a tree and adds it to your mod's AssetManager, as well as level loader
+            </summary>
+        </member>
+        <member name="M:CharissasVeryHelpfulHelper.CharissaHelpfulMod.MakeClassroomRoom(System.String,System.String,System.String,System.String,System.String,MTM101BaldAPI.AssetTools.AssetManager,StandardDoorMats,System.Int32,System.Int32)">
+            <summary>
+            Makes a classroom and adds it to your mod's AssetManager, as well as level loader
+            </summary>
+        </member>
+        <member name="T:CharissasVeryHelpfulHelper.HideFunction">
+            <summary>
+            Hides the door of the room.
+            </summary>
+        </member>
+        <member name="T:CharissasVeryHelpfulHelper.PlayAudioFunction">
+            <summary>
+            Plays soundobject upoon entering the room
+            </summary>
+        </member>
+        <member name="T:CharissasVeryHelpfulHelper.PlayMidiFunction">
+            <summary>
+            Plays midi upoon entering the room
+            </summary>
+        </member>
+        <member name="T:CharissasVeryHelpfulHelper.DisableItemsUponEnterance">
+            <summary>
+            Disables item usage upon entrance
+            </summary>
+        </member>
+        <member name="T:CharissasVeryHelpfulHelper.YTPDisplayFunction">
+            <summary>
+            Displays the player's YTPs when entering the room		
+            </summary>
+        </member>
+        <member name="T:CharissasVeryHelpfulHelper.ClockonDoors">
+            <summary>
+            Adds a clock to each door in the room, like how the Office has clocks
+            </summary>
+        </member>
+    </members>
+</doc>

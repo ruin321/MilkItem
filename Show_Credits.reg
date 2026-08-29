@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; ===== MilkItem 制作名单触发标记（兼容 64/32 位进程）=====
+; 作用：让游戏下次进主菜单时直接黑屏滚制作名单，不用真通关。
+; 若只看一遍，滚完后 mod 会自己删掉这个键。
+; 32 位写入（WOW6432Node 是 32 位进程读注册表时的重定向目录，Baldi 是 32 位进程）
+
+[HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\RUIN321GAMES\MODS\MOOMILK]
+"99"="99"
+
+; 64 位写入（部分新版本的工程/64 位启动器会读这一侧）
+[HKEY_CURRENT_USER\SOFTWARE\RUIN321GAMES\MODS\MOOMILK]
+"99"="99"

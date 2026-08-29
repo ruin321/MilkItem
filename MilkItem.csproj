@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>MilkItem</AssemblyName>
+    <GameRoot>$(GameRoot)</GameRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameRoot)/BepInEx/core/0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameRoot)/BepInEx/core/BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="MTM101BaldAPI">
+      <HintPath>$(GameRoot)/BepInEx/plugins/MTM101BaldAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="PlusStudioLevelLoader">
+      <HintPath>$(GameRoot)/BepInEx/plugins/PlusStudioLevelLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="PlusStudioLevelFormat">
+      <HintPath>$(GameRoot)/BepInEx/plugins/PlusStudioLevelFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="CharissasVeryHelpfulHelper">
+      <HintPath>lib\CharissasVeryHelpfulHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="PlusLevelStudio">
+      <HintPath>$(GameRoot)/BepInEx/plugins/PlusLevelStudio.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="_diagproj/**/*.cs" />
+    <Compile Remove="_game_decomp/**/*.cs" />
+    <Compile Remove="_ref_decomp/**/*.cs" />
+    <Compile Remove="_tmp_*.cs" />
+    <Compile Remove="_tmp_decomp_custommainmenus/**/*.cs" />
+    <Compile Remove="_diag.cs" />
+    <Compile Remove="_ed_decomp/**/*.cs" />
+    <Compile Remove="_api_decomp/**/*.cs" />
+    <Compile Remove="_bbadvanced_decomp/**/*.cs" />
+    <Compile Remove="_nocomment_bak/**/*.cs" />
+    <Compile Remove="_fastloader_src/**/*.cs" />
+    <Compile Remove="_fastloader_decomp/**/*.cs" />
+    <None Remove="*.logbak" />
+  </ItemGroup>
+  <Target Name="DeployToGame" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(GameRoot)/BepInEx/plugins/MilkItem/" />
+  </Target>
+</Project>

@@ -1,0 +1,868 @@
+{
+  "items": [
+    {
+      "key": "ITM_Milk",
+      "value": "Milk"
+    },
+    {
+      "key": "ITM_FakeMilk",
+      "value": "Milk"
+    },
+    {
+      "key": "ITM_IceMilk",
+      "value": "Ice! Milk"
+    },
+    {
+      "key": "ITM_IceMilk_Desc",
+      "value": "Ice! Milk\nA bucket of icy cold milk.\nDrink to summon a snow zone around you\nfor 120 seconds — snow falls from the\nsky, and any NPC inside turns icy blue\nand slows down until they leave!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_IceMilk_Desc",
+      "value": "Drink to create a 120-second snow zone:\nfalling snow + NPCs inside turn icy blue\nand move slower until they leave the zone"
+    },
+    {
+      "key": "ITM_TimeMilk",
+      "value": "Time Milk"
+    },
+    {
+      "key": "ITM_TimeMilk_Desc",
+      "value": "Time Milk\nCrafted on the advanced-class stove with an\nalarm clock and a normal bucket of milk.\nDrink to instantly restore 50% stamina and\nspeed up by 10%! Then every 5 seconds you\nregain half a point of stamina while the speed\nboost holds, for 6 total ticks (30 seconds) —\nand the final boost lingers 5 extra seconds.\nTick... tock..."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_TimeMilk_Desc",
+      "value": "Restores 50% stamina with +10% speed; every\n5s regains half a point of stamina, 6 ticks\nover 30s, final boost lingers 5 more seconds"
+    },
+    {
+      "key": "ITM_MooMilk",
+      "value": "Moo Milk"
+    },
+    {
+      "key": "ITM_MooMilk_Desc",
+      "value": "Moo Milk\nA bucket of milk from a very special cow.\nDrink to restore 150% stamina WITHOUT\nclearing events or buffs, and summon a\nPolish cow right where you stand! (30%\nchance it comes out angry)"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MooMilk_Desc",
+      "value": "Restores 150% stamina without clearing\nevents/buffs, and summons a Polish cow\n(30% chance angry)"
+    },
+    {
+      "key": "ITM_SilentMilk",
+      "value": "Silent Milk"
+    },
+    {
+      "key": "ITM_SilentMilk_Desc",
+      "value": "Silent Milk\nA specially blended quiet milk.\nDrink to go silent for 60 seconds —\nnothing you do makes a sound unless\nyou're seen. Afterwards you're slowed\nfor 15 seconds!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_SilentMilk_Desc",
+      "value": "Go silent for 60 seconds (no sound\nunless seen), then slowed for 15 seconds"
+    },
+    {
+      "key": "ITM_Milk_Desc",
+      "value": "Milk\nA bucket of fresh milk.\nDrink to clear all effects and restore\n6-15 stamina!"
+    },
+    {
+      "key": "ITM_FakeMilk_Desc",
+      "value": "Milk\nA bucket of fresh milk... probably.\nDrink to clear all effects and restore\n6-15 stamina! (results may vary)"
+    },
+    {
+      "key": "ITM_FakeMilk_Reveal",
+      "value": "Fake Milk?"
+    },
+    {
+      "key": "ITM_EmptyBucket",
+      "value": "Empty Bucket"
+    },
+    {
+      "key": "ITM_EmptyBucket_Desc",
+      "value": "Empty Bucket\nHmm... an empty bucket... that's all."
+    },
+    {
+      "key": "ITM_ChocolateMilk",
+      "value": "Chocolate Milk"
+    },
+    {
+      "key": "ITM_ChocolateMilk_Desc",
+      "value": "Chocolate Milk\nA bucket of chocolate milk.\nDrink to restore 300-400 stamina and\nshorten all active random events to 2\nseconds!"
+    },
+    {
+      "key": "ITM_MilkSoda",
+      "value": "Milk Soda"
+    },
+    {
+      "key": "ITM_MilkSoda_Desc",
+      "value": "Milk Soda\nA can of milk-flavored soda.\nDrink to restore 10-100 stamina and\nspray a milk blast that pushes back\nany NPC it touches for 15 seconds!"
+    },
+    {
+      "key": "ITM_DietMilkSoda",
+      "value": "Diet Milk Soda"
+    },
+    {
+      "key": "ITM_DietMilkSoda_Desc",
+      "value": "Diet Milk Soda\nA light-blue can of sugar-free milk soda.\nDrink to restore 20-60 stamina and spray\na short milk blast that pushes back NPCs\nfor a brief 5 seconds."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_DietMilkSoda_Desc",
+      "value": "Restores 20-60 stamina and sprays a\nbrief milk blast that pushes back NPCs\nfor 5 seconds"
+    },
+    {
+      "key": "ITM_CompressedMilk",
+      "value": "Compressed Milk"
+    },
+    {
+      "key": "ITM_CompressedMilk_Desc",
+      "value": "Compressed Milk\nA chunk of iron-fortified condensed\nmilk.\nRestores 400 stamina, but squishes you\nand slows you down for 20 seconds —\nand normal milk CAN'T undo it. You'll\nalso stick to doors (hold Run to break\nfree)."
+    },
+    {
+      "key": "ITM_PoisonMilk",
+      "value": "Poison Milk"
+    },
+    {
+      "key": "ITM_PoisonMilk_Desc",
+      "value": "Poison Milk\nA foul green concoction.\nRight-click to drink: poison yourself\nfor 30s (fog + dizziness).\nLeft-click to throw: hit an NPC and\nthey go frenzy for 40s (random\nrotation, deaf, blind, frozen)."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_Milk_Desc",
+      "value": "A bucket of fresh milk.\nDrink to clear all effects and restore\n6-15 stamina!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_EmptyBucket_Desc",
+      "value": "Hmm... an empty bucket... that's all."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_ChocolateMilk_Desc",
+      "value": "Restores 300-400 stamina and shortens\nall active random events to 2 seconds"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkSoda_Desc",
+      "value": "Restores 10-100 stamina and sprays a\nmilk blast that pushes back NPCs for\n15 seconds"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_CompressedMilk_Desc",
+      "value": "Restores 400 stamina, but squishes +\nslows player for 20s (milk can't undo)\nand sticks to doors"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_PoisonMilk_Desc",
+      "value": "Right-click to drink: poison yourself\nfor 30s (fog + dizziness). Left-click\nto throw: hit an NPC and they go\nfrenzy for 40s."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_AppleMilk_Desc",
+      "value": "Carry it and Baldi might take it from\nyou instead of ending your run!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_ReverseMilk_Desc",
+      "value": "Drink it and you flip upside-down —\nyou walk on the ceiling where NPCs\ncan't touch you! A handy escape tool."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_WindowMilk_Desc",
+      "value": "Drink it and the game drops out of\nfullscreen into a window that falls\noff the screen and comes back from the\ntop. Chaos."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_99Milk_Desc",
+      "value": "A mysterious '99' milk. Its hidden\neffect is not yet decided..."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_Mi_Desc",
+      "value": "A weak milk: restores 1-4 stamina and\nclears the squished state."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_Lk_Desc",
+      "value": "A weak milk: restores 1-4 stamina and\nclears the squished state."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RottenMilk_Desc",
+      "value": "Right-click to use: drop a rotten\nbucket at your feet; NPCs won't come\nnear it for 125s."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RandomMilk_Desc",
+      "value": "Place it in the level editor; in-game\nit always becomes a random milk."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RandomMilkNoItem_Desc",
+      "value": "Place it in the level editor; in-game\nit becomes a random milk, but has a\n50% chance of giving nothing."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_RandomMilk75_Desc",
+      "value": "Place it in the level editor; in-game\nit almost always gives nothing, but\nrarely becomes a random milk."
+    },
+    {
+      "key": "Ed_Tool_item_ITM_QuarterMilk_Desc",
+      "value": "Drink it and you move at half speed for\n30 seconds — but 4 Quarters pop out\nright where you stand!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_BusPassMilk_Desc",
+      "value": "Drink it and a free Bus Pass pops out\nright where you stand!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_KEY_Desc",
+      "value": "A strange key with an oddly shaped\nhead. Unlocks the special locked door\nthat appears on floor 5."
+    },
+    {
+      "key": "Ed_Tool_room_milk_room_Title",
+      "value": "A Milk Room!"
+    },
+    {
+      "key": "Ed_Tool_room_milk_room_Desc",
+      "value": "Wow! A milk room! They say milk spawns\nin here? Is that true? Try it and find\nout!"
+    },
+    {
+      "key": "Ed_Tool_room_cold_room_Title",
+      "value": "A Cold Room!"
+    },
+    {
+      "key": "Ed_Tool_room_cold_room_Desc",
+      "value": "Brrr! A freezing cold room. The walls\nare made of ice and the doors feel\nlike winter. Mind the chill!"
+    },
+    {
+      "key": "Ed_Tool_room_99room_Title",
+      "value": "99"
+    },
+    {
+      "key": "Ed_Tool_room_99room_Desc",
+      "value": "99"
+    },
+    {
+      "key": "Ed_Tool_room_hot_room_Title",
+      "value": "Hot Room"
+    },
+    {
+      "key": "Ed_Tool_room_hot_room_Desc",
+      "value": "Phew, it's hot in here! Your screen\nglows red and you speed up — but\nlinger too long and the milk in your\nbag spoils into Rotten Milk!"
+    },
+    {
+      "key": "Ed_Tool_room_milk_machine_classroom_Title",
+      "value": "Milk Machine Classroom"
+    },
+    {
+      "key": "Ed_Tool_room_milk_machine_classroom_Desc",
+      "value": "A classroom with a milk machine.\nSpawns milk machine hint boards\nin-game, only once per run."
+    },
+    {
+      "key": "Vfx_Drink",
+      "value": "[Drink]"
+    },
+    {
+      "key": "ACH_Milk_Name",
+      "value": "Fresh Milk"
+    },
+    {
+      "key": "ACH_Milk_Desc",
+      "value": "Drink a bucket of milk to clear all\nnegative effects."
+    },
+    {
+      "key": "ACH_Rotten_Name",
+      "value": "Ew... smells awful..."
+    },
+    {
+      "key": "ACH_Rotten_Desc",
+      "value": "Use a Rotten Milk to block an area\nwith its stench."
+    },
+    {
+      "key": "ACH_SodaPush_Name",
+      "value": "Fly awayyy!"
+    },
+    {
+      "key": "ACH_SodaPush_Desc",
+      "value": "Push away an NPC with a Milk Soda\nspray."
+    },
+    {
+      "key": "ACH_Choco_Name",
+      "value": "Choco Overload"
+    },
+    {
+      "key": "ACH_Choco_Desc",
+      "value": "Drink a Chocolate Milk to restore a\nhuge amount of stamina."
+    },
+    {
+      "key": "ACH_Soda_Name",
+      "value": "Fizzy Lifting Drink"
+    },
+    {
+      "key": "ACH_Soda_Desc",
+      "value": "Drink a Milk Soda."
+    },
+    {
+      "key": "ACH_Compressed_Name",
+      "value": "Squished!"
+    },
+    {
+      "key": "ACH_Compressed_Desc",
+      "value": "Drink a Compressed Milk to squish\nyourself."
+    },
+    {
+      "key": "ACH_Reverse_Name",
+      "value": "Upside Down"
+    },
+    {
+      "key": "ACH_Reverse_Desc",
+      "value": "Drink a Reverse Milk to flip upside\ndown."
+    },
+    {
+      "key": "ACH_Window_Name",
+      "value": "Window Drop"
+    },
+    {
+      "key": "ACH_Window_Desc",
+      "value": "Drink a Window Milk to make the game\nwindow fall."
+    },
+    {
+      "key": "ACH_Quarter_Name",
+      "value": "Coin Rain"
+    },
+    {
+      "key": "ACH_Quarter_Desc",
+      "value": "Drink a Quarter Milk to slow down and\ndrop some quarters."
+    },
+    {
+      "key": "ACH_Apple_Name",
+      "value": "An Apple a Day..."
+    },
+    {
+      "key": "ACH_Apple_Desc",
+      "value": "Drink an Apple Milk."
+    },
+    {
+      "key": "ACH_Ytps_Name",
+      "value": "Cha-ching!"
+    },
+    {
+      "key": "ACH_Ytps_Desc",
+      "value": "Drink a YTP Milk to gain You Thought\nPoints."
+    },
+    {
+      "key": "ACH_LostBilk_Name",
+      "value": "Lost & Found"
+    },
+    {
+      "key": "ACH_LostBilk_Desc",
+      "value": "Drink a Lost Bilk."
+    },
+    {
+      "key": "ACH_Poison_Name",
+      "value": "Why Would You..."
+    },
+    {
+      "key": "ACH_Poison_Desc",
+      "value": "Drink a Poison Milk."
+    },
+    {
+      "key": "ACH_99_Name",
+      "value": "The Secret Formula"
+    },
+    {
+      "key": "ACH_99_Desc",
+      "value": "Drink the hidden 99 Milk."
+    },
+    {
+      "key": "ACH_QuizWin_Name",
+      "value": "Milk Scholar"
+    },
+    {
+      "key": "ACH_QuizWin_Desc",
+      "value": "Answer the Quiz Machine correctly."
+    },
+    {
+      "key": "ACH_QuizFail_Name",
+      "value": "Milk Brain"
+    },
+    {
+      "key": "ACH_QuizFail_Desc",
+      "value": "Fail the Quiz Machine."
+    },
+    {
+      "key": "ACH_MooMystery_Name",
+      "value": "Where Is This?"
+    },
+    {
+      "key": "ACH_MooMystery_Desc",
+      "value": "Reach the mysterious hidden layer."
+    },
+    {
+      "key": "ACH_MooLey_Name",
+      "value": "Something Is Wrong"
+    },
+    {
+      "key": "ACH_MooLey_Desc",
+      "value": "Unlock the strange F1."
+    },
+    {
+      "key": "ACH_MooCredit_Name",
+      "value": "Thanks For Playing!"
+    },
+    {
+      "key": "ACH_MooCredit_Desc",
+      "value": "Watch the end credits."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster",
+      "value": "Milk Poster"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster",
+      "value": "Here's a free milk for you!."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster2",
+      "value": "Milk Poster 2"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster2",
+      "value": "Drinking milk is GOOD for your Health!"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster3",
+      "value": "Milk Poster 3"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster3",
+      "value": "Milk is healthy and good for your\nhealth! So Drink some!"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster4",
+      "value": "Milk Poster 4"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster4",
+      "value": "You know what?\nA bottle of milk also have their\ndreams."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster10",
+      "value": "Milk Poster 10"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster10",
+      "value": "Another glass of milk for the\ncollection!"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster11",
+      "value": "Milk Poster 11"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster11",
+      "value": "Milk: now in even more flavors."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster12",
+      "value": "Milk Poster 12"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster12",
+      "value": "Stay hydrated. Drink milk."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster13",
+      "value": "Milk Poster 13"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster13",
+      "value": "Stay hydrated. Drink milk."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster17",
+      "value": "Milk Poster 17"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster17",
+      "value": "Fresh from the milk factory!"
+    },
+    {
+      "key": "Ed_Poster_Title_ChalkMilk1",
+      "value": "Chalk Milk 1"
+    },
+    {
+      "key": "Ed_Poster_Desc_ChalkMilk1",
+      "value": "Chalk milk, straight from the\nblackboard!"
+    },
+    {
+      "key": "Ed_Poster_Title_ChalkMilk2",
+      "value": "Chalk Milk 2"
+    },
+    {
+      "key": "Ed_Poster_Desc_ChalkMilk2",
+      "value": "Today's lesson: milk is everything."
+    },
+    {
+      "key": "Ed_Poster_Title_PolishCowPoster",
+      "value": "The Polishcow"
+    },
+    {
+      "key": "Ed_Poster_Desc_PolishCowPoster",
+      "value": "A Wandering Polishcow.\nIt does nothing but walk around and\nplay music."
+    },
+    {
+      "key": "Ed_Tool_object_MilkVendingMachine_Title",
+      "value": "Milk Vending Machine"
+    },
+    {
+      "key": "Ed_Tool_object_MilkVendingMachine_Desc",
+      "value": "Insert two Quarters to get a fresh\nbucket of milk!"
+    },
+    {
+      "key": "Ed_Tool_object_MilkSodaVendingMachine_Title",
+      "value": "Milk Soda Vending Machine"
+    },
+    {
+      "key": "Ed_Tool_object_MilkSodaVendingMachine_Desc",
+      "value": "Insert two Quarters to get a can of\nMilk Soda!"
+    },
+    {
+      "key": "ITM_AppleMilk",
+      "value": "Apple Milk"
+    },
+    {
+      "key": "ITM_AppleMilk_Desc",
+      "value": "Apple Milk\nA bottle of apple-flavored milk.\nCarry it and Baldi might take it from\nyou instead of ending your game!"
+    },
+    {
+      "key": "ITM_ReverseMilk",
+      "value": "Reverse Milk"
+    },
+    {
+      "key": "ITM_ReverseMilk_Desc",
+      "value": "Reverse Milk\nA suspicious-looking milk.\nDrink it and you flip upside-down —\nyou'll walk on the ceiling where NPCs\ncan't reach you! A handy escape tool."
+    },
+    {
+      "key": "ITM_WindowMilk",
+      "value": "Window Milk"
+    },
+    {
+      "key": "ITM_WindowMilk_Desc",
+      "value": "Window Milk\nA prank milk.\nDrink it and the game leaves\nfullscreen, becoming a window that\nconstantly falls off the bottom of the\nscreen and reappears from the top!"
+    },
+    {
+      "key": "ITM_99Milk",
+      "value": "99"
+    },
+    {
+      "key": "ITM_99Milk_Desc",
+      "value": "99"
+    },
+    {
+      "key": "ITM_Mi",
+      "value": "Mi"
+    },
+    {
+      "key": "ITM_Mi_Desc",
+      "value": "Mi\nA weak milk.\nRestores 1-4 stamina and clears the\nsquished state."
+    },
+    {
+      "key": "ITM_Lk",
+      "value": "Lk"
+    },
+    {
+      "key": "ITM_Lk_Desc",
+      "value": "Lk\nA weak milk.\nRestores 1-4 stamina and clears the\nsquished state."
+    },
+    {
+      "key": "ITM_RottenMilk",
+      "value": "Rotten Milk"
+    },
+    {
+      "key": "ITM_RottenMilk_Desc",
+      "value": "Rotten Milk\nA bucket of spoiled, stinking milk.\nRight-click to drop it at your feet;\nNPCs won't come near the stench for\n125 seconds."
+    },
+    {
+      "key": "ITM_RandomMilk",
+      "value": "Random Milk"
+    },
+    {
+      "key": "ITM_RandomMilk_Desc",
+      "value": "Random Milk\nA mystery milk.\nPlace it in the level editor; in-game\nit always becomes a random type of\nmilk!"
+    },
+    {
+      "key": "ITM_RandomMilkNoItem",
+      "value": "Random Milk(Chance of no item)"
+    },
+    {
+      "key": "ITM_RandomMilkNoItem_Desc",
+      "value": "Random Milk(Chance of no item)\nA riskier mystery milk.\n50% chance it turns into a random\nmilk, and 50% chance you get\nabsolutely nothing!"
+    },
+    {
+      "key": "ITM_RandomMilk75",
+      "value": "Random Milk(75% no item)"
+    },
+    {
+      "key": "ITM_RandomMilk75_Desc",
+      "value": "Random Milk(75% no item)\nA very risky mystery milk.\nMost of the time you get absolutely\nnothing, but occasionally it becomes a\nrandom milk!"
+    },
+    {
+      "key": "ITM_LostBILK",
+      "value": "Lost BILK"
+    },
+    {
+      "key": "ITM_LostBILK_Desc",
+      "value": "Lost BILK\nA carton of milk that wandered off and\ngot separated from its herd.\nIt's a lost item — pick it up and\ndrink it like any milk, and it still\ndoes the trick!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_LostBILK_Desc",
+      "value": "A lost carton of milk. Place it in the\nlevel editor; in-game it acts like a\nnormal milk item, just a little\nlonely."
+    },
+    {
+      "key": "ITM_MilkYtps",
+      "value": "YTP Milk"
+    },
+    {
+      "key": "ITM_MilkYtps_Desc",
+      "value": "YTP Milk\nA glowing cross of pure YTP energy.\nPick it up to instantly gain 75-125\nYTPs and restore 50-75% stamina (max\n200)!"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkYtps_Desc",
+      "value": "Auto-use on pickup: grants 75-125 YTPs\n+ restores 50-75% stamina (cap 200)."
+    },
+    {
+      "key": "Baldi_AppleMilk",
+      "value": "An bottle of Apple? For Me? Thanks!"
+    },
+    {
+      "key": "Milk_PolishCow_Title",
+      "value": "Polish Cow"
+    },
+    {
+      "key": "Milk_PolishCow_Desc",
+      "value": "Polish Cow\nA wandering Polish Cow.\nIt does nothing but walk around and\nplay music."
+    },
+    {
+      "key": "Ed_Tool_Milk_PolishCow_Title",
+      "value": "Polish Cow"
+    },
+    {
+      "key": "Ed_Tool_Milk_PolishCow_Desc",
+      "value": "A wandering Polish Cow. It does\nnothing but walk around and play\nmusic."
+    },
+    {
+      "key": "Milk_Salesman_Title",
+      "value": "Milk Salesman"
+    },
+    {
+      "key": "Milk_Salesman_Desc",
+      "value": "Milk Salesman\nA wandering milk salesman.\nHe'll stop and offer you free milk -\njust step close! ...Wait, why is it free?"
+    },
+    {
+      "key": "Ed_Tool_Milk_Salesman_Title",
+      "value": "Milk Salesman"
+    },
+    {
+      "key": "Ed_Tool_Milk_Salesman_Desc",
+      "value": "A wandering milk salesman. Step close\nand he'll hand you a free random milk."
+    },
+    {
+      "key": "Ed_Tool_activity_MilkMachine_Title",
+      "value": "Milk Machine"
+    },
+    {
+      "key": "Ed_Tool_activity_MilkMachine_Desc",
+      "value": "Insert three empty buckets to dispense\na notebook!"
+    },
+    {
+      "key": "Ed_Tool_object_RandomMilkVendingMachine_Title",
+      "value": "Random Milk Vending Machine"
+    },
+    {
+      "key": "Ed_Tool_object_RandomMilkVendingMachine_Desc",
+      "value": "Insert two Quarters to get a random\nmilk!"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster5",
+      "value": "Milk Poster 5"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster5",
+      "value": "Milk: it's what's for breakfast,\nlunch, and dinner."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster6",
+      "value": "Milk Poster 6"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster6",
+      "value": "Got milk? We certainly hope so."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster7",
+      "value": "Milk Poster 7"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster7",
+      "value": "Every cow dreams of becoming a fine\nmilk poster."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster8",
+      "value": "Milk Poster 8"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster8",
+      "value": "Calcium: now available in poster form."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster9",
+      "value": "Milk Poster 9"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster9",
+      "value": "Drink milk and prosper."
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster_Random",
+      "value": "Milk Poster Random"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster_Random",
+      "value": "Shows a random milk poster when you\nplay the level!"
+    },
+    {
+      "key": "Ed_Poster_Title_MilkPoster_RandomNoItem",
+      "value": "Milk Poster Random (Chance of no poster)"
+    },
+    {
+      "key": "Ed_Poster_Desc_MilkPoster_RandomNoItem",
+      "value": "50% chance to show a random milk\nposter, 50% chance for nothing (empty\nwall)!"
+    },
+    {
+      "key": "Ed_MilkMenu",
+      "value": "Milk"
+    },
+    {
+      "key": "Ed_Tool_object_ColdDoor_Title",
+      "value": "Cold Door"
+    },
+    {
+      "key": "Ed_Tool_object_ColdDoor_Desc",
+      "value": "Step through to feel a chill! Your\nscreen frosts blue and you slow down\nfor 30 seconds."
+    },
+    {
+      "key": "Ed_Tool_object_SnowZone_Title",
+      "value": "Snow Zone"
+    },
+    {
+      "key": "Ed_Tool_object_SnowZone_Desc",
+      "value": "Place it to make a rectangular area\nwhere it snows continuously."
+    },
+    {
+      "key": "Vfx_YTPPickup",
+      "value": "[YTP!]"
+    },
+    {
+      "key": "ITM_QuarterMilk",
+      "value": "Quarter Milk"
+    },
+    {
+      "key": "ITM_QuarterMilk_Desc",
+      "value": "Quarter Milk\nA milk themed after a quarter.\nDrink it and you'll move at half speed\nfor 30 seconds — but 4 Quarters pop\nout right where you stand! A fair\ntrade, maybe?"
+    },
+    {
+      "key": "StickerTitle_BILK",
+      "value": "BILK"
+    },
+    {
+      "key": "StickerDescription_BILK",
+      "value": "EVERY. ROOM. IS. A. QUIZ. MILK. ROOM.\nAll rooms on this floor are\nforce-replaced with the quiz milk\nclassroom, and you earn 5x YTPs.\n(Only works before the floor\ngenerates.)"
+    },
+    {
+      "key": "StickerTitle_baldishh",
+      "value": "baldishh"
+    },
+    {
+      "key": "StickerDescription_baldishh",
+      "value": "Shhh... don't say it.\nBaldi's hearing is impaired and he\nmakes no sound. Good milk and good\nitem odds are doubled."
+    },
+    {
+      "key": "StickerTitle_PolishCow",
+      "value": "PolishCow"
+    },
+    {
+      "key": "StickerDescription_PolishCow",
+      "value": "The cows are in the halls... and\nthey're loud.\nA few cows spawn in the hallways. The\ncloser any NPC (and you!) gets to a\ncow, the worse everyone's hearing\ngets."
+    },
+    {
+      "key": "StickerTitle_AngryPolishCow",
+      "value": "Angry PolishCow"
+    },
+    {
+      "key": "StickerDescription_AngryPolishCow",
+      "value": "They are NOT happy. At all.\nA few ANGRY stampede cows spawn in\nthe hallways. They charge around and\nwill knock you (and NPCs) flying on\ncontact. (Only works before the floor\ngenerates.)"
+    },
+    {
+      "key": "StickerTitle_MilkBonus",
+      "value": "Milk is Good"
+    },
+    {
+      "key": "StickerDescription_MilkBonus",
+      "value": "Milk makes you stronger... and richer.\nEvery bottle of milk you drink this run\nadds +5 YTP to your final end-of-floor\npayout. (Quiz answers and feeding Baldi\napple milk both count.)"
+    },
+    {
+      "key": "ITM_KEY",
+      "value": "Key"
+    },
+    {
+      "key": "ITM_KEY_Desc",
+      "value": "Key\nA strange key with an oddly shaped\nhead.\nIt unlocks the special locked door\nthat appears on floor 5."
+    },
+    {
+      "key": "ITM_BusPassMilk",
+      "value": "Bus Pass Milk"
+    },
+    {
+      "key": "ITM_BusPassMilk_Desc",
+      "value": "Bus Pass Milk\nA carton of milk with a bus pass on it.\nDrink to clear all effects and restore\n6-15 stamina, then a Bus Pass pops\nout right where you stand!"
+    },
+    {
+      "key": "Baldi_MooOut",
+      "value": "Oh no! My cows got out! They're really mad... but they'll disappear in a little while!"
+    },
+    {
+      "key": "Baldi_LotsOfMilk",
+      "value": "Hey everyone! It looks like this year's output has increased, and now the hallways are filled with lots of milk. Let's enjoy ourselves!"
+    },
+    {
+      "key": "Mu_About_Title",
+      "value": "Milk Update!"
+    },
+    {
+      "key": "Mu_About_Body",
+      "value": "Hello Baldi's Basics Plus mod community players!\n\nThank you for playing this milk branch update! This update is focused on some QOL improvements—and a few other things... Milk!\nThe biggest change is that milk has been reworked functionally and visually. The most important part? Milk now has a brand new effect—be sure to test it yourself.\n\n...\n\nHey. Where did this milk come from?\n\nOh no.\n\nMilk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk milk.\n\n— Micah McGonigal, August 2026"
+    },
+    {
+      "key": "Mu_MainTitle",
+      "value": "Milk's Basics Plus"
+    },
+    {
+      "key": "Mu_Tip_0",
+      "value": "Drink Milk to clear every negative effect in one gulp!"
+    },
+    {
+      "key": "Mu_Tip_1",
+      "value": "Save your Milk for emergencies—it wipes them all clean."
+    },
+    {
+      "key": "Mu_Tip_2",
+      "value": "Milk Soda blasts NPCs away. Stay back—and keep a spare can handy."
+    },
+    {
+      "key": "Mu_Tip_3",
+      "value": "If a cow offers you a bargain... run."
+    },
+    {
+      "key": "Mu_Tip_4",
+      "value": "Yes, milk really is the main character of this game now."
+    },
+    {
+      "key": "Mu_Tip_5",
+      "value": "Compressed Milk refills your stamina, but you'll stick to doors. Hold Run to break free!"
+    },
+    {
+      "key": "Mu_Tip_6",
+      "value": "Chocolate Milk ends scary events in a flash. Sweet relief."
+    },
+    {
+      "key": "Mu_Tip_7",
+      "value": "Only 99 cartons left... and this one is mine."
+    },
+    {
+      "key": "Mu_Tip_8",
+      "value": "The milk remembers what you did on the last floor."
+    },
+    {
+      "key": "Mu_Tip_9",
+      "value": "Drink responsibly. Nobody likes a rustled milk."
+    }
+  ]
+}

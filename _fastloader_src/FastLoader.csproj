@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>FastLoader</AssemblyName>
+    <RootNamespace>FastLoader</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GameRoot>$(GameRoot)</GameRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="FastLoaderPlugin.cs;LevelBuilderPatches.cs;GenerateExceptionCatcher.cs;FastAtlasPatches.cs;AssetBytesCache.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameRoot)/BepInEx/core/0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameRoot)/BepInEx/core/BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="MTM101BaldAPI">
+      <HintPath>$(GameRoot)/BepInEx/plugins/MTM101BaldAPI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="DeployToGame" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(GameRoot)/BepInEx/plugins/" />
+  </Target>
+</Project>
