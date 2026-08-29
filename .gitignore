@@ -41,6 +41,9 @@ TrimWarnings.ps1
 tools/
 _fastloader_src/
 
+# 贴图资源（正式资源在游戏 StreamingAssets/Modded/com.milk.item/，仓库只存源码）
+*.png
+
 # 系统/编辑器
 .DS_Store
 Thumbs.db
