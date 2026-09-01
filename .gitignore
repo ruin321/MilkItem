@@ -40,6 +40,16 @@ TrimLogs.ps1
 TrimWarnings.ps1
 tools/
 _fastloader_src/
+# 独立 mod / 开发参考与脚本（仅供本地）
+Espace/
+TheExpanse/
+_bbpc_decomp/
+_decomp_qop/
+_decomp_shaker/
+_milk_decomp/
+_final.ps1
+_refl.ps1
+_webpconv.ps1
 
 # 贴图资源（正式资源在游戏 StreamingAssets/Modded/com.milk.item/，仓库只存源码）
 *.png
