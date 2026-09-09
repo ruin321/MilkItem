@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using BepInEx;
@@ -136,6 +136,15 @@ namespace MilkItem
                 ItemObject alarmClock = FindItem(Items.AlarmClock);
                 AddRecipe(new ItemObject[] { alarmClock, Plugin.MilkItemObject },
                     new ItemObject[] { Plugin.TimeMilkItemObject });
+
+                
+                AddRecipe(new ItemObject[] { milk, milk, milk },
+                    new ItemObject[] { Plugin.MatryoshkaMilkItemObject });
+
+                
+                ItemObject grapplingHook = FindItem(Items.GrapplingHook);
+                AddRecipe(new ItemObject[] { milk, grapplingHook },
+                    new ItemObject[] { Plugin.MilkCannonItemObject });
 
                 int after = SafeRecipeCount();
                 Plugin.SilentLog($"[KitchenStoveCompat] 灶台配方注册完成，全服配方数 {before} → {after}（本次注册 {after - before} 条）");

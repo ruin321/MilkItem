@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -25,10 +25,12 @@ namespace MilkItem
         private int countRemaining;
         private bool machineActive = true;
 
+
+        private Sprite fullSprite;
+        private Sprite emptySprite;
+
         
-        private const float TextBaseHeight = 6.1f;
-        private const float FloatAmplitude = 0.18f;
-        private const float FloatSpeed = 2.2f;
+        private const float TextBaseHeight = 4.8f;
 
         
         private const int QuizUses = 1;
@@ -55,7 +57,7 @@ namespace MilkItem
 
         private void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
             GameObject textObj = new GameObject("CounterBillboard");
             textObj.transform.SetParent(transform);
@@ -64,7 +66,7 @@ namespace MilkItem
             
             
             try { counterText.font = TMP_Settings.defaultFontAsset; } catch { }
-            counterText.fontSize = 28;
+            counterText.fontSize = 14;
             counterText.alignment = TextAlignmentOptions.Center;
             counterText.color = Color.white;
             counterText.outlineColor = Color.black;
@@ -147,6 +149,7 @@ namespace MilkItem
 
             if (spriteRenderer != null) spriteRenderer.color = Color.white;
             if (counterText != null) counterText.color = Color.white;
+            UpdateMachineSprite();
             UpdateCounterDisplay();
         }
 
@@ -155,6 +158,8 @@ namespace MilkItem
             try
             {
                 base.Initialize();
+                Plugin.DeduplicateExteriorSigns(this);
+                RegisterOcclusion();
             }
             catch (System.Exception )
             {
@@ -162,14 +167,49 @@ namespace MilkItem
             }
         }
 
+
+
+
+
+        private void RegisterOcclusion()
+        {
+            try
+            {
+                if (spriteRenderer == null || room == null || room.ec == null) return;
+                Cell cell = room.ec.CellFromPosition(transform.position);
+                if (cell == null) return;
+                if (!cell.renderers.Contains(spriteRenderer))
+                    cell.AddRenderer(spriteRenderer);
+                if (cell.HasChunk)
+                    spriteRenderer.enabled = cell.Chunk.Rendering;
+            }
+            catch (System.Exception)
+            {
+            }
+        }
+
         public void Init(Sprite machineSprite, int initialCount)
         {
             if (spriteRenderer == null)
             {
-                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>();
                 if (spriteRenderer == null) spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
             spriteRenderer.sprite = machineSprite;
+        }
+
+        public void SetStateSprites(Sprite full, Sprite empty)
+        {
+            fullSprite = full;
+            emptySprite = empty;
+            if (spriteRenderer != null && spriteRenderer.sprite == null) spriteRenderer.sprite = full ?? empty;
+        }
+
+        private void UpdateMachineSprite()
+        {
+            if (spriteRenderer == null) return;
+            Sprite stateSprite = machineActive ? fullSprite : emptySprite;
+            if (stateSprite != null) spriteRenderer.sprite = stateSprite;
         }
 
         public void Clicked(int playerNumber)
@@ -197,6 +237,7 @@ namespace MilkItem
             {
                 spriteRenderer.color = Color.gray;
                 machineActive = false;
+                UpdateMachineSprite();
                 if (counterText != null) counterText.color = Color.gray;
 
                 if (armed && !quizOver)
@@ -274,11 +315,12 @@ namespace MilkItem
             Camera cam = Camera.main;
             if (cam != null)
             {
-                t.rotation = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f);
+                Quaternion face = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f);
+                if (spriteRenderer != null) spriteRenderer.transform.rotation = face;
+                t.rotation = face;
+                Vector3 lp = t.localPosition;
+                t.localPosition = new Vector3(lp.x, TextBaseHeight, lp.z);
             }
-            float y = TextBaseHeight + Mathf.Sin(Time.unscaledTime * FloatSpeed) * FloatAmplitude;
-            Vector3 lp = t.localPosition;
-            t.localPosition = new Vector3(lp.x, y, lp.z);
         }
 
         
@@ -294,6 +336,7 @@ namespace MilkItem
             machineActive = true;
             if (spriteRenderer != null) spriteRenderer.color = Color.white;
             if (counterText != null) counterText.color = Color.white;
+            UpdateMachineSprite();
             UpdateCounterDisplay();
 
             
@@ -378,6 +421,7 @@ namespace MilkItem
                 quizOver = true;
                 if (spriteRenderer != null) spriteRenderer.color = Color.gray;
                 if (counterText != null) counterText.color = Color.gray;
+                UpdateMachineSprite();
                 try { AchievementHelper.UnlockAchievement("quiz_fail"); } catch (System.Exception) { }
                 
             }

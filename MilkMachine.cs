@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using MTM101BaldAPI.AssetTools;
@@ -25,15 +25,14 @@ namespace MilkItem
         private int countRemaining;
         private bool machineActive = true;
 
-        
-        
-        
-        private const float TextBaseHeight = 6.1f;
-        private const float FloatAmplitude = 0.18f; 
-        private const float FloatSpeed = 2.2f;      
+
+        private Sprite fullSprite;
+        private Sprite emptySprite;
 
         
         
+        
+        private const float TextBaseHeight = 4.8f; 
 
         
         private const int NormalPoints = 50;
@@ -43,7 +42,7 @@ namespace MilkItem
         {
             
             
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
             
             
@@ -59,7 +58,7 @@ namespace MilkItem
                 counterText.font = TMP_Settings.defaultFontAsset;
             }
             catch { }
-            counterText.fontSize = 28;
+            counterText.fontSize = 14;
             counterText.alignment = TextAlignmentOptions.Center;
             counterText.color = Color.white;
             counterText.outlineColor = Color.black;
@@ -122,6 +121,8 @@ namespace MilkItem
             try
             {
                 base.Initialize();
+                Plugin.DeduplicateExteriorSigns(this);
+                RegisterOcclusion();
             }
             catch (System.Exception )
             {
@@ -129,14 +130,42 @@ namespace MilkItem
             }
         }
 
+
+
+
+
+        private void RegisterOcclusion()
+        {
+            try
+            {
+                if (spriteRenderer == null || room == null || room.ec == null) return;
+                Cell cell = room.ec.CellFromPosition(transform.position);
+                if (cell == null) return;
+                if (!cell.renderers.Contains(spriteRenderer))
+                    cell.AddRenderer(spriteRenderer);
+                if (cell.HasChunk)
+                    spriteRenderer.enabled = cell.Chunk.Rendering;
+            }
+            catch (System.Exception)
+            {
+            }
+        }
+
         public void Init(Sprite machineSprite, int initialCount)
         {
             if (spriteRenderer == null)
             {
-                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>();
                 if (spriteRenderer == null) spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
             spriteRenderer.sprite = machineSprite;
+        }
+
+        public void SetStateSprites(Sprite full, Sprite empty)
+        {
+            fullSprite = full;
+            emptySprite = empty;
+            if (spriteRenderer != null && spriteRenderer.sprite == null) spriteRenderer.sprite = full ?? empty;
         }
 
         public void Clicked(int playerNumber)
@@ -197,20 +226,18 @@ namespace MilkItem
 
             if (counterText == null) return;
 
-            Transform t = counterText.transform;
-
             Camera cam = Camera.main;
             if (cam != null)
             {
+                Quaternion face = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f);
                 
-                t.rotation = Quaternion.Euler(0f, cam.transform.eulerAngles.y, 0f);
+                if (spriteRenderer != null) spriteRenderer.transform.rotation = face;
+                
+                Transform t = counterText.transform;
+                t.rotation = face;
+                Vector3 lp = t.localPosition;
+                t.localPosition = new Vector3(lp.x, TextBaseHeight, lp.z);
             }
-
-            
-            
-            float y = TextBaseHeight + Mathf.Sin(Time.unscaledTime * FloatSpeed) * FloatAmplitude;
-            Vector3 lp = t.localPosition;
-            t.localPosition = new Vector3(lp.x, y, lp.z);
         }
 
         
@@ -224,6 +251,8 @@ namespace MilkItem
             bool hasPower = room.Powered;
             if (spriteRenderer != null)
             {
+                Sprite stateSprite = machineActive ? fullSprite : emptySprite;
+                if (stateSprite != null) spriteRenderer.sprite = stateSprite;
                 spriteRenderer.color = (hasPower && machineActive) ? Color.white : Color.gray;
             }
             if (counterText != null)

@@ -513,6 +513,50 @@
       "value": "Apple Milk\nA bottle of apple-flavored milk.\nCarry it and Baldi might take it from\nyou instead of ending your game!"
     },
     {
+      "key": "ITM_BullyMilk",
+      "value": "Bully Milk"
+    },
+    {
+      "key": "ITM_BullyMilk_Desc",
+      "value": "Bully Milk\nA bottle of the toughest milk at school.\nDrink it to turn invincible and shove every\nNPC away for a solid 20 seconds,\nbut afterwards it will claim one item from your bag."
+    },
+    {
+      "key": "ITM_MatryoshkaMilk",
+      "value": "Matryoshka Milk (3)"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk2",
+      "value": "Matryoshka Milk (2)"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk1",
+      "value": "Matryoshka Milk (1)"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk_Desc",
+      "value": "Matryoshka Milk\nThree milks in one bottle. Drink it three\ntimes: the first is supercharged (clears\nevents + 150% stamina), the second is\nnormal, and the third is only half filling."
+    },
+    {
+      "key": "ITM_MilkCannon",
+      "value": "Milk Cannon (4)"
+    },
+    {
+      "key": "ITM_MilkCannon3",
+      "value": "Milk Cannon (3)"
+    },
+    {
+      "key": "ITM_MilkCannon2",
+      "value": "Milk Cannon (2)"
+    },
+    {
+      "key": "ITM_MilkCannon1",
+      "value": "Milk Cannon (1)"
+    },
+    {
+      "key": "ITM_MilkCannon_Desc",
+      "value": "Milk Cannon\nA milk cannon with four shots. Each shot\nblasts a blob of concentrated milk that\nshoves NPCs back, and refills half of\nyour stamina."
+    },
+    {
       "key": "ITM_ReverseMilk",
       "value": "Reverse Milk"
     },
@@ -651,6 +695,14 @@
     {
       "key": "Ed_Tool_activity_MilkMachine_Desc",
       "value": "Insert three empty buckets to dispense\na notebook!"
+    },
+    {
+      "key": "Ed_Tool_activity_QuizMachine_Title",
+      "value": "Quiz Milk Machine"
+    },
+    {
+      "key": "Ed_Tool_activity_QuizMachine_Desc",
+      "value": "Step close and answer the quiz!\nCorrect answers give bonus YTPs."
     },
     {
       "key": "Ed_Tool_object_RandomMilkVendingMachine_Title",
@@ -863,6 +915,50 @@
     {
       "key": "Mu_Tip_9",
       "value": "Drink responsibly. Nobody likes a rustled milk."
+    },
+    {
+      "key": "Ed_RandomEvent_milkflood",
+      "value": "Milk Flood\nMilk pours from the sky! 120 bottles\nrain down around you for 60 seconds.\nA certain principal is watching..."
+    },
+    {
+      "key": "Ed_RandomEvent_milkstampede",
+      "value": "Polish Cow Stampede\nA few ANGRY stampede cows spawn in\nthe hallways. They charge around and\nwill knock you (and NPCs) flying on\ncontact. (Only works before the floor\ngenerates.)"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_FakeMilk_Desc",
+      "value": "Drink to clear all effects and restore\n6-15 stamina! (results may vary)"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_BullyMilk_Desc",
+      "value": "Drink it to turn invincible and shove every\nNPC away for 20 seconds, but afterwards\nit claims one item from your bag"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MatryoshkaMilk_Desc",
+      "value": "Three milks in one bottle. Drink it three\ntimes: first is supercharged (clears\nevents + 150% stamina), second is\nnormal, third is only half filling"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MatryoshkaMilk2_Desc",
+      "value": "Two drinks left in this bottle.\nThe next one restores full stamina,\nthe last one only half"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MatryoshkaMilk1_Desc",
+      "value": "One drink left in this bottle.\nIt restores only half of your stamina"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon_Desc",
+      "value": "A milk cannon with four shots. Each shot\nblasts a blob of concentrated milk that\nshoves NPCs back, and refills half of\nyour stamina"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon3_Desc",
+      "value": "A milk cannon with three shots left.\nEach shot shoves NPCs back and\nrefills half of your stamina"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon2_Desc",
+      "value": "A milk cannon with two shots left.\nEach shot shoves NPCs back and\nrefills half of your stamina"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon1_Desc",
+      "value": "A milk cannon with one shot left.\nEach shot shoves NPCs back and\nrefills half of your stamina"
     }
   ]
 }

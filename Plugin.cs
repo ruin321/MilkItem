@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -70,7 +70,15 @@ namespace MilkItem
         public static ItemObject WindowMilkItemObject;       
         public static ItemObject NineNineMilkItemObject;      
         public static ItemObject QuarterMilkItemObject;       
-        public static ItemObject BusPassMilkItemObject;       
+        public static ItemObject BusPassMilkItemObject;
+        public static ItemObject BullyMilkItemObject;
+        public static ItemObject MatryoshkaMilkItemObject;
+        public static ItemObject MatryoshkaMilkItemObject2;
+        public static ItemObject MatryoshkaMilkItemObject1;
+        public static ItemObject MilkCannonItemObject;
+        public static ItemObject MilkCannonItemObject3;
+        public static ItemObject MilkCannonItemObject2;
+        public static ItemObject MilkCannonItemObject1;       
         public static ItemObject SilentMilkItemObject;        
         public static ItemObject MooMilkItemObject;           
         public static ItemObject IceMilkItemObject;            
@@ -90,6 +98,15 @@ namespace MilkItem
         public static bool key99SpawnedThisRun = false;                
         public static bool nineNineTriggeredThisRun = false;          
         public static bool nineNineDoorUnlockedByPlayer = false;      
+
+        public static int KeyRushCount = 0;                            
+        public static int KeySpawnFloor = -1;                          
+        public static bool KeyRushF5 = false;                          
+        public static bool KeyRushFinalizing = false;                  
+        public static bool KeyRush99KeyGiven = false;                  
+        public static GameObject KeyRushHUD = null;                     
+        public static KeyRushHud KeyRushHudComp = null;                
+        public static GameObject KeySpawnFXRoot = null;                  
 
         
         
@@ -1188,7 +1205,6 @@ namespace MilkItem
                 if (Plugin.FactorySceneObject == null)
                 {
                     Plugin.LoadFactoryLevelAsset();
-                    if (Plugin.FactorySceneObject == null) {  return; }
                 }
                 System.Type pdType = __instance.GetType();
                 System.Reflection.Assembly pdAsm = pdType.Assembly;
@@ -1237,29 +1253,33 @@ namespace MilkItem
                     new System.Type[] { typeof(string), typeof(UnityEngine.Events.UnityAction), typeof(Texture2D), extraDataType }, null);
                 if (createButton == null) {  return; }
 
-                UnityEngine.Events.UnityAction action = () => LoadMilkFactoryFromPineDebug();
-                object button = createButton.Invoke(null, new object[] { "MilkFactory", action, transparent, data });
-                if (button == null) {  return; }
-
                 System.Reflection.MethodInfo insertText = pdType.GetMethod("InsertTextToButton", new System.Type[] { pbType, typeof(string) });
-                if (insertText != null) button = insertText.Invoke(__instance, new object[] { button, Plugin.FactorySceneObject.levelTitle });
 
-                
                 System.Action<object, object> insertIntoList = (listObj, btn) =>
                 {
                     var addM = listObj.GetType().GetMethod("Add", new System.Type[] { pbType });
                     if (addM != null) addM.Invoke(listObj, new object[] { btn });
                 };
 
-                
                 object eventButtons = null;
                 var eventButtonsField = pdType.GetField("eventButtons", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 if (eventButtonsField != null) eventButtons = eventButtonsField.GetValue(__instance);
 
-                
-                
-                if (eventButtons != null) insertIntoList(eventButtons, button);
-                else insertIntoList(sceneButtons, button);
+                try
+                {
+                    if (Plugin.FactorySceneObject != null)
+                    {
+                        UnityEngine.Events.UnityAction action = () => LoadMilkFactoryFromPineDebug();
+                        object button = createButton.Invoke(null, new object[] { "MilkFactory", action, transparent, data });
+                        if (button != null)
+                        {
+                            if (insertText != null) button = insertText.Invoke(__instance, new object[] { button, Plugin.FactorySceneObject.levelTitle });
+                            if (eventButtons != null) insertIntoList(eventButtons, button);
+                            else insertIntoList(sceneButtons, button);
+                        }
+                    }
+                }
+                catch (System.Exception ) {  }
 
                 
                 try
@@ -1685,6 +1705,22 @@ namespace MilkItem
         
         
         private const string FakeMilkEnumName = "ITM_FakeMilk";
+
+        internal const string BullyMilkEnumName = "ITM_BullyMilk";
+
+        internal const string MatryoshkaMilkEnumName = "ITM_MatryoshkaMilk";
+
+        internal const string MilkCannonEnumName = "ITM_MilkCannon";
+
+        internal const string MatryoshkaMilkEnumName1 = "ITM_MatryoshkaMilk1";
+
+        internal const string MatryoshkaMilkEnumName2 = "ITM_MatryoshkaMilk2";
+
+        internal const string MilkCannonEnumName1 = "ITM_MilkCannon1";
+
+        internal const string MilkCannonEnumName2 = "ITM_MilkCannon2";
+
+        internal const string MilkCannonEnumName3 = "ITM_MilkCannon3";
         
         private const string SilentMilkEnumName = "ITM_SilentMilk";
         
@@ -1783,7 +1819,9 @@ namespace MilkItem
             LoadingEvents.RegisterOnAssetsLoaded(Info, RegisterLostBilk, LoadingEventOrder.Pre);
             
             LoadingEvents.RegisterOnAssetsLoaded(Info, RegisterMilkYtps, LoadingEventOrder.Pre);
-            
+
+            LoadingEvents.RegisterOnAssetsLoaded(Info, NewMilks.RegisterAll, LoadingEventOrder.Pre);
+
             LoadingEvents.RegisterOnAssetsLoaded(Info, RegisterRandomMilkVendingMachine, LoadingEventOrder.Pre);
             
             LoadingEvents.RegisterOnAssetsLoaded(Info, RegisterKey, LoadingEventOrder.Pre);
@@ -3416,6 +3454,14 @@ namespace MilkItem
             ReloadItemSpritesFor(SilentMilkItemObject, "shhmilk_Small.png", "shhmilk_Large.png");
             ReloadItemSpritesFor(LostBilkItemObject, "Lost_BILK_Small.png", "Lost_BILK_Large.png");
             ReloadItemSpritesFor(MilkYtpsItemObject, "Milk_Ytps_Small.png", "Milk_Ytps_Large.png");
+            ReloadItemSpritesFor(BullyMilkItemObject, "BullyMilk_Small.png", "BullyMilk_Large.png");
+            ReloadItemSpritesFor(MatryoshkaMilkItemObject, "MatryoshkaMilk_Small.png", "MatryoshkaMilk_Large.png");
+            ReloadItemSpritesFor(MatryoshkaMilkItemObject1, "MatryoshkaMilk_Small.png", "MatryoshkaMilk_Large.png");
+            ReloadItemSpritesFor(MatryoshkaMilkItemObject2, "MatryoshkaMilk_Small.png", "MatryoshkaMilk_Large.png");
+            ReloadItemSpritesFor(MilkCannonItemObject, "MilkCannon_Small.png", "MilkCannon_Large.png");
+            ReloadItemSpritesFor(MilkCannonItemObject1, "MilkCannon_Small.png", "MilkCannon_Large.png");
+            ReloadItemSpritesFor(MilkCannonItemObject2, "MilkCannon_Small.png", "MilkCannon_Large.png");
+            ReloadItemSpritesFor(MilkCannonItemObject3, "MilkCannon_Small.png", "MilkCannon_Large.png");
             ReloadItemSpritesFor(KeyItemObject, "KEY_Small.png", "KEY_Large.png");
         }
 
@@ -4066,8 +4112,9 @@ namespace MilkItem
             Add(MooMilkItemObject, 30);               
             Add(IceMilkItemObject, 30);               
             Add(LostBilkItemObject, 30);              
-            Add(SilentMilkItemObject, 25);            
-            Add(NineNineMilkItemObject, 8);           
+            Add(SilentMilkItemObject, 25);
+            Add(NineNineMilkItemObject, 8);
+            Add(BullyMilkItemObject, 15);
             return list.ToArray();
         }
 
@@ -4421,34 +4468,87 @@ namespace MilkItem
         
         
         
+        private static bool milkEventEditorRegistered = false;
+
+        
+        private static void RegisterMilkRandomEventsEditorTools(EditorMode mode, bool vanillaCompliant)
+        {
+            try
+            {
+                if (LevelLoaderPlugin.Instance == null) return;
+                bool hasFlood = LevelLoaderPlugin.Instance.randomEventAliases.ContainsKey("milkflood");
+                bool hasStampede = LevelLoaderPlugin.Instance.randomEventAliases.ContainsKey("milkstampede");
+                if (!hasFlood && !hasStampede) return;
+
+                
+                if (!milkEventEditorRegistered)
+                {
+                    try
+                    {
+                        if (hasFlood)
+                        {
+                            Sprite floodIcon = AssetLoader.SpriteFromMod(Instance, new Vector2(0.5f, 0.5f), 50f, "Milk Flood.png");
+                            if (floodIcon != null && !LevelStudioPlugin.Instance.eventSprites.ContainsKey("milkflood"))
+                                LevelStudioPlugin.Instance.eventSprites.Add("milkflood", floodIcon);
+                        }
+                    }
+                    catch (System.Exception) { }
+                    try
+                    {
+                        if (hasStampede)
+                        {
+                            Sprite stampedeIcon = AssetLoader.SpriteFromMod(Instance, new Vector2(0.5f, 0.5f), 50f, "polish crazy.png");
+                            if (stampedeIcon != null && !LevelStudioPlugin.Instance.eventSprites.ContainsKey("milkstampede"))
+                                LevelStudioPlugin.Instance.eventSprites.Add("milkstampede", stampedeIcon);
+                        }
+                    }
+                    catch (System.Exception) { }
+                    milkEventEditorRegistered = true;
+                }
+
+                try
+                {
+                    if (hasFlood && !mode.availableRandomEvents.Contains("milkflood"))
+                        mode.availableRandomEvents.Add("milkflood");
+                }
+                catch (System.Exception) { }
+                try
+                {
+                    if (hasStampede && !mode.availableRandomEvents.Contains("milkstampede"))
+                        mode.availableRandomEvents.Add("milkstampede");
+                }
+                catch (System.Exception) { }
+            }
+            catch (System.Exception)
+            {
+            }
+        }
+
+        
+
+
+        private const float WallSignExtrudeFromWall = 1.8f;
+
         private static Animator TryCreateWallSignPrefab(string prefabName, string leftFile, string rightFile)
         {
             try
             {
-                Animator baseSign = null;
-                Animator[] allAnims = Resources.FindObjectsOfTypeAll<Animator>();
-                foreach (var a in allAnims)
-                {
-                    if (a != null && a.gameObject != null)
-                    {
-                        string nm = a.gameObject.name;
-                        if (nm != null && nm.IndexOf("ActivityExteriorSign", System.StringComparison.OrdinalIgnoreCase) >= 0)
-                        {
-                            baseSign = a;
-                            break;
-                        }
-                    }
-                }
-                if (baseSign == null) return null;
-                Animator obj = UnityEngine.Object.Instantiate<Animator>(baseSign);
+
+
+
+                Animator obj = UnityEngine.Object.Instantiate<Animator>(
+                    StockActivityExteriorSignByName("ActivityExteriorSign_MathMachine"));
+                obj.gameObject.ConvertToPrefab(true);
                 obj.gameObject.name = prefabName;
-                SpriteRenderer[] srs = obj.GetComponentsInChildren<SpriteRenderer>();
-                if (srs == null || srs.Length < 2)
+
+                SpriteRenderer[] comps = obj.GetComponentsInChildren<SpriteRenderer>();
+                if (comps == null || comps.Length < 2)
                 {
                     UnityEngine.Object.Destroy(obj.gameObject);
                     return null;
                 }
-                float ppu = (srs[0].sprite != null) ? srs[0].sprite.pixelsPerUnit : 10f;
+
+                float ppu = (comps[0].sprite != null) ? comps[0].sprite.pixelsPerUnit : 10f;
                 Vector2 pivot = new Vector2(0.5f, 0.5f);
                 Sprite right = AssetLoader.SpriteFromMod(Instance, pivot, ppu, rightFile);
                 Sprite left = AssetLoader.SpriteFromMod(Instance, pivot, ppu, leftFile);
@@ -4457,15 +4557,39 @@ namespace MilkItem
                     UnityEngine.Object.Destroy(obj.gameObject);
                     return null;
                 }
-                srs[0].sprite = right;
-                srs[1].sprite = left;
-                obj.gameObject.ConvertToPrefab(true);
+
+                comps[0].sprite = right;
+                comps[1].sprite = left;
+
+
+
+
+                for (int i = 0; i < comps.Length; i++)
+                {
+                    if (comps[i] == null) continue;
+                    Transform f = comps[i].transform;
+
+
+
+                    f.localPosition += Vector3.forward * WallSignExtrudeFromWall;
+                }
                 return obj;
             }
             catch (System.Exception)
             {
                 return null;
             }
+        }
+
+
+
+        private static Animator StockActivityExteriorSignByName(string name)
+        {
+            foreach (var a in Resources.FindObjectsOfTypeAll<Animator>())
+            {
+                if (a != null && a.gameObject != null && a.gameObject.name == name) return a;
+            }
+            return null;
         }
 
         
@@ -4477,6 +4601,43 @@ namespace MilkItem
                 System.Reflection.FieldInfo f = typeof(Activity).GetField("exteriorSignPrefab",
                     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 if (f != null) f.SetValue(activity, signPrefab);
+            }
+            catch (System.Exception) { }
+        }
+
+
+
+
+
+        public static void DeduplicateExteriorSigns(Activity activity)
+        {
+            try
+            {
+                if (activity == null) return;
+                System.Reflection.FieldInfo fi = typeof(Activity).GetField("exteriorSigns",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                if (fi == null) return;
+                var list = fi.GetValue(activity) as System.Collections.Generic.List<Animator>;
+                if (list == null || list.Count < 2) return;
+                var keep = new System.Collections.Generic.List<Animator>();
+                foreach (var s in list)
+                {
+                    if (s == null) continue;
+                    bool dup = false;
+                    foreach (var k in keep)
+                    {
+                        if (k == null) continue;
+                        if (Vector3.Distance(k.transform.position, s.transform.position) < 0.5f &&
+                            Mathf.Abs(Mathf.DeltaAngle(k.transform.eulerAngles.y, s.transform.eulerAngles.y)) < 5f)
+                        {
+                            dup = true;
+                            break;
+                        }
+                    }
+                    if (dup) UnityEngine.Object.Destroy(s.gameObject);
+                    else keep.Add(s);
+                }
+                fi.SetValue(activity, keep);
             }
             catch (System.Exception) { }
         }
@@ -4780,15 +4941,28 @@ namespace MilkItem
                         GameObject machinePrefab = new GameObject("MilkMachine");
                         machinePrefab.SetActive(true);
                         MilkMachine machine = machinePrefab.AddComponent<MilkMachine>();
+
+
+
+                        GameObject machineVisual = new GameObject("MachineVisual");
+                        machineVisual.transform.SetParent(machinePrefab.transform, false);
+                        machineVisual.transform.localPosition = Vector3.zero;
+
+                        const float MachinePPU = 68f;
                         
                         
                         
-                        Sprite machineSprite = AssetLoader.SpriteFromMod(
-                            Instance, new Vector2(0.5f, 0f), 50f, "machine", "milkmachine.png");
-                        SpriteRenderer sr = machinePrefab.AddComponent<SpriteRenderer>();
+                        Sprite machineFull = AssetLoader.SpriteFromMod(
+                            Instance, new Vector2(0.5f, 0f), MachinePPU, "machine", "MilkMachine_Full.png");
+                        Sprite machineEmpty = AssetLoader.SpriteFromMod(
+                            Instance, new Vector2(0.5f, 0f), MachinePPU, "machine", "MilkMachine_Emp.png");
+                        Sprite machineSprite = machineFull != null ? machineFull : AssetLoader.SpriteFromMod(
+                            Instance, new Vector2(0.5f, 0f), MachinePPU, "machine", "milkmachine.png");
+                        SpriteRenderer sr = machineVisual.AddComponent<SpriteRenderer>();
                         sr.sprite = machineSprite;
                         int initCount = UnityEngine.Random.Range(1, 10); 
                         machine.Init(machineSprite, initCount);
+                        machine.SetStateSprites(machineFull, machineEmpty);
 
                         
                         
@@ -4798,8 +4972,8 @@ namespace MilkItem
                         if (machinePrefab.GetComponent<BoxCollider>() == null)
                         {
                             BoxCollider collider = machinePrefab.AddComponent<BoxCollider>();
-                            collider.center = new Vector3(0f, 2.56f, 0f);
-                            collider.size = new Vector3(3f, 5.12f, 0.5f);
+                            collider.center = new Vector3(0f, 3.35f, 0f);
+                            collider.size = new Vector3(3f, 6.69f, 0.5f);
                             collider.isTrigger = false;
                         }
                         
@@ -4895,6 +5069,16 @@ namespace MilkItem
                     {
                         EditorInterfaceModes.AddModeCallback(RegisterPolishCowEditorTools);
                         polishCowEditorRegistered = true;
+                    }
+                }
+                catch (System.Exception ) {  }
+
+                
+                try
+                {
+                    if (!milkEventEditorRegistered)
+                    {
+                        EditorInterfaceModes.AddModeCallback(RegisterMilkRandomEventsEditorTools);
                     }
                 }
                 catch (System.Exception ) {  }
@@ -5306,6 +5490,10 @@ namespace MilkItem
                 Add(FakeMilkItemObject, 25);         
                 Add(LostBilkItemObject, 20);         
                 
+                Add(BullyMilkItemObject, 20);        
+                Add(MatryoshkaMilkItemObject, 22);   
+                Add(MilkCannonItemObject, 20);         
+                
                 if (shopItems.Count == 0)
                 {
                     
@@ -5414,18 +5602,31 @@ namespace MilkItem
                 GameObject machinePrefab = new GameObject("QuizMachine");
                 machinePrefab.SetActive(true);
                 QuizMachine machine = machinePrefab.AddComponent<QuizMachine>();
+
+
+
+                GameObject machineVisual = new GameObject("MachineVisual");
+                machineVisual.transform.SetParent(machinePrefab.transform, false);
+                machineVisual.transform.localPosition = Vector3.zero;
+
+                const float MachinePPU = 68f;
                 
-                Sprite machineSprite = AssetLoader.SpriteFromMod(
-                    Instance, new Vector2(0.5f, 0f), 50f, "machine", "milkmachine.png");
-                SpriteRenderer sr = machinePrefab.AddComponent<SpriteRenderer>();
+                Sprite machineFull = AssetLoader.SpriteFromMod(
+                    Instance, new Vector2(0.5f, 0f), MachinePPU, "machine", "QuickMilkMachine_Full.png");
+                Sprite machineEmpty = AssetLoader.SpriteFromMod(
+                    Instance, new Vector2(0.5f, 0f), MachinePPU, "machine", "QuickMilkMachine_Emp.png");
+                Sprite machineSprite = machineFull != null ? machineFull : AssetLoader.SpriteFromMod(
+                    Instance, new Vector2(0.5f, 0f), MachinePPU, "machine", "milkmachine.png");
+                SpriteRenderer sr = machineVisual.AddComponent<SpriteRenderer>();
                 sr.sprite = machineSprite;
                 machine.Init(machineSprite, 1);
+                machine.SetStateSprites(machineFull, machineEmpty);
 
                 if (machinePrefab.GetComponent<BoxCollider>() == null)
                 {
                     BoxCollider collider = machinePrefab.AddComponent<BoxCollider>();
-                    collider.center = new Vector3(0f, 2.56f, 0f);
-                    collider.size = new Vector3(3f, 5.12f, 0.5f);
+                    collider.center = new Vector3(0f, 3.35f, 0f);
+                    collider.size = new Vector3(3f, 6.69f, 0.5f);
                     collider.isTrigger = false;
                 }
                 int clickLayer = LayerMask.NameToLayer("ClickableCollideable");
@@ -6668,7 +6869,7 @@ namespace MilkItem
 
         
         
-        private static void LoadSceneObjectInline(SceneObject so, string who)
+        internal static void LoadSceneObjectInline(SceneObject so, string who)
         {
             try
             {
@@ -10532,7 +10733,21 @@ namespace MilkItem
                             {
                                 if (e == null || e.prefab == null) continue;
                                 if (e.prefab is Structure_Vent) { forced.Add(Plugin.CloneStructure(e)); ventCount++; }
-                                else if (e.prefab is Structure_HallDoor) { forced.Add(Plugin.CloneStructure(e)); doorCount++; }
+                                else if (e.prefab is Structure_HallDoor) {
+                                    
+                                    
+                                    
+                                    if (UnityEngine.Random.value <= 0.12f)
+                                    {
+                                        forced.Add(Plugin.CloneStructure(e));
+                                        doorCount++;
+                                        if (doorCount < 2 && UnityEngine.Random.value <= 0.35f)
+                                        {
+                                            forced.Add(Plugin.CloneStructure(e));
+                                            doorCount++;
+                                        }
+                                    }
+                                }
                                 else if (e.prefab is Structure_Rotohalls) { forced.Add(Plugin.CloneStructure(e)); rotoCount++; }
                             }
                         }
@@ -11164,6 +11379,7 @@ namespace MilkItem
                 if (IsFinalCelebrationScene(__instance.scene)) return;
                 
                 if (Plugin.MooRedWhiteActive) return;
+                if (Plugin.KeyRushF5) return;
 
                 
                 
@@ -11314,10 +11530,11 @@ namespace MilkItem
                     return;
                 }
                 
-                if (__instance.scene.levelNo == 0 && Plugin.KeyItemObject != null)
+                if (__instance.scene.levelNo <= 3 && Plugin.KeyItemObject != null)
                 {
+                    Plugin.KeySpawnFloor = -1; 
                     var ecF = UnityEngine.Object.FindObjectOfType<EnvironmentController>();
-                    if (ecF != null) ecF.StartCoroutine(PatchSpawnKeyInFaculty.EnsureKeyOnFirstFloor(__instance));
+                    if (ecF != null) ecF.StartCoroutine(PatchSpawnKeyInFaculty.EnsureKeyForFloor(__instance, __instance.scene.levelNo));
                 }
                 
                 __instance.ld.initialEventGap = 10f;
@@ -11336,26 +11553,6 @@ namespace MilkItem
                 if (__instance.ld.minEvents < 1) __instance.ld.minEvents = 1;
                 if (__instance.ld.maxEvents < __instance.ld.minEvents) __instance.ld.maxEvents = __instance.ld.minEvents + 1;
 
-                
-                
-                if (Plugin.KeyItemObject != null && __instance.ld.shopItems != null)
-                {
-                    bool hasKey = false;
-                    foreach (var si in __instance.ld.shopItems)
-                    {
-                        if (si != null && si.selection == Plugin.KeyItemObject) { hasKey = true; break; }
-                    }
-                    if (!hasKey)
-                    {
-                        var shops = new System.Collections.Generic.List<WeightedItemObject>(__instance.ld.shopItems);
-                        WeightedItemObject kw = new WeightedItemObject();
-                        kw.selection = Plugin.KeyItemObject;
-                        kw.weight = 50;
-                        shops.Add(kw);
-                        __instance.ld.shopItems = shops.ToArray();
-                        
-                    }
-                }
             }
             catch (System.Exception ) {  }
         }
@@ -11449,21 +11646,21 @@ namespace MilkItem
 
                 
                 
-                Plugin.SilentLog("[MilkKey] LoadRoom levelNo=" + __instance.scene.levelNo + " category=" + room.category + " KeyObj=" + (Plugin.KeyItemObject != null) + " spawned=" + Plugin.keySpawnedThisRun);
-                if (Plugin.KeyItemObject != null && !Plugin.keySpawnedThisRun
-                    && __instance.scene.levelNo == 0
+                Plugin.SilentLog("[MilkKey] LoadRoom levelNo=" + __instance.scene.levelNo + " category=" + room.category + " KeyObj=" + (Plugin.KeyItemObject != null) + " spawnFloor=" + Plugin.KeySpawnFloor);
+                if (Plugin.KeyItemObject != null && __instance.scene.levelNo <= 3
+                    && __instance.scene.levelNo != Plugin.KeySpawnFloor
                     && (int)(object)room.category == (int)(object)RoomCategory.Faculty)
                 {
-                    Plugin.keySpawnedThisRun = true; 
-                    room.ec.StartCoroutine(SpawnKeyAfterGeneration(room));
-                    Plugin.SilentLog("[MilkKey] Faculty room hit; spawn scheduled.");
+                    Plugin.KeySpawnFloor = __instance.scene.levelNo; 
+                    room.ec.StartCoroutine(SpawnKeyAfterGeneration(room, __instance.scene.levelNo));
+                    Plugin.SilentLog("[MilkKey] Faculty room hit; spawn scheduled for floor " + __instance.scene.levelNo);
                 }
             }
             catch (System.Exception ) {  }
         }
 
         
-        private static System.Collections.IEnumerator SpawnKeyAfterGeneration(RoomController room)
+        private static System.Collections.IEnumerator SpawnKeyAfterGeneration(RoomController room, int levelNo)
         {
             float wait = 0f;
             LevelBuilder lb = null;
@@ -11478,6 +11675,7 @@ namespace MilkItem
             if (lb == null || Plugin.KeyItemObject == null)
             {
                 Plugin.SilentLog("[MilkKey] abort: lb=" + (lb != null) + " KeyObj=" + (Plugin.KeyItemObject != null));
+                Plugin.KeySpawnFloor = -1;
                 Plugin.keySpawnedThisRun = false;
                 Plugin.keySpawnAttemptDone = true;
                 yield break;
@@ -11485,32 +11683,67 @@ namespace MilkItem
             if (room == null || room.ec == null) { Plugin.keySpawnAttemptDone = true; yield break; }
             try
             {
-                var cell = room.RandomEntitySafeCellNoGarbage();
+                Cell cell = null;
+                RoomController target = room;
+                EnvironmentController ec = room.ec;
+                Vector3 playerPos = Vector3.zero;
+                try
+                {
+                    var p = Singleton<CoreGameManager>.Instance.GetPlayer(0);
+                    playerPos = (p != null && p.transform != null) ? p.transform.position : Vector3.zero;
+                }
+                catch (System.Exception) { }
+                float bestD = -1f;
+                foreach (var r in ec.rooms)
+                {
+                    if (r == null || r.category != RoomCategory.Faculty) continue;
+                    var sc = r.RandomEntitySafeCellNoGarbage();
+                    if (sc == null) continue;
+                    float d = Vector3.Distance(playerPos, sc.CenterWorldPosition);
+                    if (d > bestD) { bestD = d; target = r; cell = sc; }
+                }
                 if (cell == null)
                 {
-                    Plugin.SilentLog("[MilkKey] faculty room had no safe cell; retrying later.");
+                    foreach (var r in ec.rooms)
+                    {
+                        if (r == null) continue;
+                        RoomCategory rc = r.category;
+                        if (rc == RoomCategory.Special || rc == RoomCategory.Store
+                            || rc == RoomCategory.Mystery || rc == RoomCategory.FieldTrip)
+                            continue;
+                        var sc = r.RandomEntitySafeCellNoGarbage();
+                        if (sc == null) continue;
+                        float d = Vector3.Distance(playerPos, sc.CenterWorldPosition);
+                        if (d > bestD) { bestD = d; target = r; cell = sc; }
+                    }
+                }
+                if (cell == null)
+                {
+                    Plugin.SilentLog("[MilkKey] no safe cell anywhere on floor " + levelNo + "; retrying later.");
+                    Plugin.KeySpawnFloor = -1;
                     Plugin.keySpawnedThisRun = false;
                     Plugin.keySpawnAttemptDone = true;
                     yield break;
                 }
                 Vector3 pos3 = cell.CenterWorldPosition;
-                lb.CreateItem(room, Plugin.KeyItemObject, new Vector2(pos3.x, pos3.z), false);
+                lb.CreateItem(target, Plugin.KeyItemObject, new Vector2(pos3.x, pos3.z), false);
+                Plugin.KeySpawnFloor = levelNo;
                 Plugin.keySpawnedThisRun = true;
                 Plugin.keySpawnAttemptDone = true;
-                Plugin.SilentLog("[MilkKey] KEY placed at " + pos3);
+                try { target.ec.StartCoroutine(KeySpawnParticles(target.ec, pos3 + Vector3.up * 0.6f)); } catch (System.Exception) { }
+                Plugin.SilentLog("[MilkKey] KEY placed at " + pos3 + " roomCat=" + target.category + " dist=" + bestD);
             }
             catch (System.Exception e)
             {
                 Plugin.SilentLog("[MilkKey] CreateItem threw: " + e);
+                Plugin.KeySpawnFloor = -1;
                 Plugin.keySpawnedThisRun = false; 
                 Plugin.keySpawnAttemptDone = true;
             }
         }
 
         
-        
-        
-        internal static System.Collections.IEnumerator EnsureKeyOnFirstFloor(LevelBuilder lb)
+        internal static System.Collections.IEnumerator EnsureKeyForFloor(LevelBuilder lb, int levelNo)
         {
             float wait = 0f;
             while (wait < 30f)
@@ -11527,7 +11760,7 @@ namespace MilkItem
                 yield return null;
             }
             yield return null;
-            if (Plugin.KeyItemObject == null || Plugin.keySpawnedThisRun) yield break;
+            if (Plugin.KeyItemObject == null || Plugin.KeySpawnFloor == levelNo) yield break;
             if (lb == null) yield break;
             try
             {
@@ -11535,12 +11768,21 @@ namespace MilkItem
                 if (ec == null) yield break;
                 RoomController room = null;
                 Cell c = null;
-                
+                Vector3 playerPos = Vector3.zero;
+                try
+                {
+                    var p = Singleton<CoreGameManager>.Instance.GetPlayer(0);
+                    playerPos = (p != null && p.transform != null) ? p.transform.position : Vector3.zero;
+                }
+                catch (System.Exception) { }
+                float bestD = -1f;
                 foreach (var r in ec.rooms)
                 {
                     if (r == null || r.category != RoomCategory.Faculty) continue;
                     var sc = r.RandomEntitySafeCellNoGarbage();
-                    if (sc != null) { room = r; c = sc; break; }
+                    if (sc == null) continue;
+                    float d = Vector3.Distance(playerPos, sc.CenterWorldPosition);
+                    if (d > bestD) { bestD = d; room = r; c = sc; }
                 }
                 
                 if (c == null)
@@ -11555,23 +11797,104 @@ namespace MilkItem
                             || rc == RoomCategory.Mystery || rc == RoomCategory.FieldTrip)
                             continue;
                         var sc = r.RandomEntitySafeCellNoGarbage();
-                        if (sc != null) { room = r; c = sc; break; }
+                        if (sc == null) continue;
+                        float d = Vector3.Distance(playerPos, sc.CenterWorldPosition);
+                        if (d > bestD) { bestD = d; room = r; c = sc; }
                     }
                 }
                 if (c == null || room == null)
                 {
-                    Plugin.SilentLog("[MilkKey] EnsureKey: no safe cell anywhere on F1.");
+                    Plugin.SilentLog("[MilkKey] EnsureKey: no safe cell anywhere on floor " + levelNo + ".");
                     yield break;
                 }
                 Vector3 pos3 = c.CenterWorldPosition;
                 lb.CreateItem(room, Plugin.KeyItemObject, new Vector2(pos3.x, pos3.z), false);
+                Plugin.KeySpawnFloor = levelNo;
                 Plugin.keySpawnedThisRun = true;
-                Plugin.SilentLog("[MilkKey] EnsureKey (fallback) placed at " + pos3 + " roomCat=" + room.category);
+                try { room.ec.StartCoroutine(KeySpawnParticles(room.ec, pos3 + Vector3.up * 0.6f)); } catch (System.Exception) { }
+                Plugin.SilentLog("[MilkKey] EnsureKey (fallback) placed at " + pos3 + " roomCat=" + room.category + " dist=" + bestD);
             }
             catch (System.Exception e)
             {
                 Plugin.SilentLog("[MilkKey] EnsureKey error: " + e);
             }
+        }
+
+        
+        private static System.Collections.IEnumerator KeySpawnParticles(EnvironmentController ec, Vector3 pos)
+        {
+            yield return null;
+            try
+            {
+                if (Plugin.KeySpawnFXRoot != null)
+                {
+                    UnityEngine.Object.Destroy(Plugin.KeySpawnFXRoot);
+                    Plugin.KeySpawnFXRoot = null;
+                }
+                GameObject root = new GameObject("KeySpawnFX");
+                root.transform.position = pos;
+                Plugin.KeySpawnFXRoot = root;
+                var ps = root.AddComponent<ParticleSystem>();
+                var main = ps.main;
+                main.loop = true;
+                main.duration = 1f;
+                main.startLifetime = 10f;
+                main.startSpeed = new ParticleSystem.MinMaxCurve(0.6f, 1.6f);
+                main.startSize = new ParticleSystem.MinMaxCurve(0.12f, 0.3f);
+                main.startColor = new Color(0f, 0f, 0f, 0.55f);
+                main.maxParticles = 220;
+                main.gravityModifier = 0f;
+                main.simulationSpace = ParticleSystemSimulationSpace.World;
+                main.playOnAwake = true;
+                var em = ps.emission;
+                em.rateOverTime = 18f;
+                var shape = ps.shape;
+                shape.shapeType = ParticleSystemShapeType.Sphere;
+                shape.radius = 0.3f;
+                shape.randomDirectionAmount = 1f;
+                var rot = ps.rotationOverLifetime;
+                rot.enabled = true;
+                rot.z = new ParticleSystem.MinMaxCurve(-360f, 360f);
+                var psr = ps.GetComponent<ParticleSystemRenderer>();
+                psr.renderMode = ParticleSystemRenderMode.Mesh;
+                var tmp = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                Mesh cubeMesh = null;
+                try { cubeMesh = tmp.GetComponent<MeshFilter>().sharedMesh; } catch (System.Exception) { }
+                UnityEngine.Object.Destroy(tmp);
+                if (cubeMesh != null) psr.mesh = cubeMesh;
+                psr.sharedMaterial = CreateBlackParticleMat();
+                var ctrl = root.AddComponent<KeySpawnFXController>();
+                ctrl.ec = ec;
+                ctrl.psr = psr;
+                try
+                {
+                    ctrl.floorNo = Singleton<CoreGameManager>.Instance != null
+                        && Singleton<CoreGameManager>.Instance.sceneObject != null
+                        ? Singleton<CoreGameManager>.Instance.sceneObject.levelNo : -1;
+                }
+                catch (System.Exception) { ctrl.floorNo = -1; }
+                ps.Play();
+            }
+            catch (System.Exception e) { Plugin.SilentLog("[KeySpawnFX] create error: " + e); }
+        }
+
+        private static Material CreateBlackParticleMat()
+        {
+            Shader sh = Shader.Find("Universal Render Pipeline/Particles/Unlit");
+            if (sh == null) sh = Shader.Find("Universal Render Pipeline/Unlit");
+            if (sh == null) sh = Shader.Find("Standard");
+            if (sh == null) sh = Shader.Find("Sprites/Default");
+            Material m = new Material(sh != null ? sh : Shader.Find("Legacy Shaders/Diffuse"));
+            try { m.color = new Color(0f, 0f, 0f, 0.55f); } catch (System.Exception) { }
+            try { m.SetFloat("_Surface", 1f); } catch (System.Exception) { }
+            try { m.SetFloat("_Mode", 3f); } catch (System.Exception) { }
+            try { m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha); } catch (System.Exception) { }
+            try { m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha); } catch (System.Exception) { }
+            try { m.SetInt("_ZWrite", 0); } catch (System.Exception) { }
+            try { m.DisableKeyword("_ALPHATEST_ON"); } catch (System.Exception) { }
+            try { m.EnableKeyword("_ALPHABLEND_ON"); } catch (System.Exception) { }
+            try { m.renderQueue = 3000; } catch (System.Exception) { }
+            return m;
         }
 
         
@@ -14631,6 +14954,29 @@ namespace MilkItem
     
     
     
+    [HarmonyPatch]
+    internal class PatchMenuWarningToMilk
+    {
+        static System.Reflection.MethodBase TargetMethod()
+        {
+            var m = typeof(LocalizationManager).GetMethod("GetLocalizedText",
+                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance,
+                null, new System.Type[] { typeof(string) }, null);
+            return m;
+        }
+        static bool Prepare() => TargetMethod() != null;
+        static void Postfix(string key, ref string __result)
+        {
+            try
+            {
+                if (key != "Men_Warning") return;
+                __result = "<color=red>WARNING</color>\n\nI LIKE MILK!";
+                Plugin.SilentLog("[Milk] Men_Warning replaced with I LIKE MILK text.");
+            }
+            catch { }
+        }
+    }
+
     public struct RandomMilkOutcome
     {
         public ItemObject Item; 
@@ -14740,6 +15086,11 @@ namespace MilkItem
             AddWeighted(Plugin.LostBilkItemObject, 30);       
             AddWeighted(Plugin.DietMilkSodaItemObject, 35, good: true);  
             AddWeighted(Plugin.SilentMilkItemObject, 25);     
+
+            
+            AddWeighted(Plugin.BullyMilkItemObject, 20);                
+            AddWeighted(Plugin.MatryoshkaMilkItemObject, 22, good: true);
+            AddWeighted(Plugin.MilkCannonItemObject, 20, good: true);     
 
             
             if (Plugin.IsF2MilkFactoryFloor())
@@ -16893,9 +17244,9 @@ namespace MilkItem
         [HarmonyPrefix]
         static bool Prefix()
         {
-            bool allow = !(Plugin.MooPhase == 1 || Plugin.MooPhase == 2 || Plugin.MooF1Active || Plugin.MooRedWhiteActive);
+            bool allow = !(Plugin.MooPhase == 1 || Plugin.MooPhase == 2 || Plugin.MooF1Active || Plugin.MooRedWhiteActive || Plugin.KeyRushF5);
             if (!allow)
-                Plugin.SilentLog($"[Moo] CreateHappyBaldi blocked: MooPhase={Plugin.MooPhase} MooF1Active={Plugin.MooF1Active} MooRedWhiteActive={Plugin.MooRedWhiteActive}");
+                Plugin.SilentLog($"[Moo] CreateHappyBaldi blocked: MooPhase={Plugin.MooPhase} MooF1Active={Plugin.MooF1Active} MooRedWhiteActive={Plugin.MooRedWhiteActive} KeyRushF5={Plugin.KeyRushF5}");
             return allow;
         }
     }
@@ -16905,9 +17256,9 @@ namespace MilkItem
         [HarmonyPrefix]
         static bool Prefix()
         {
-            bool allow = !(Plugin.MooPhase == 1 || Plugin.MooPhase == 2 || Plugin.MooF1Active || Plugin.MooRedWhiteActive);
+            bool allow = !(Plugin.MooPhase == 1 || Plugin.MooPhase == 2 || Plugin.MooF1Active || Plugin.MooRedWhiteActive || Plugin.KeyRushF5);
             if (!allow)
-                Plugin.SilentLog($"[Moo] CreateHappyBaldi blocked: MooPhase={Plugin.MooPhase} MooF1Active={Plugin.MooF1Active} MooRedWhiteActive={Plugin.MooRedWhiteActive}");
+                Plugin.SilentLog($"[Moo] CreateHappyBaldi blocked: MooPhase={Plugin.MooPhase} MooF1Active={Plugin.MooF1Active} MooRedWhiteActive={Plugin.MooRedWhiteActive} KeyRushF5={Plugin.KeyRushF5}");
             return allow;
         }
     }
@@ -16943,6 +17294,14 @@ namespace MilkItem
                 Plugin.keySpawnedThisRun = false;
                 Plugin.keySpawnAttemptDone = false;
                 Plugin.key99SpawnedThisRun = false;
+                Plugin.KeyRushCount = 0;
+                Plugin.KeySpawnFloor = -1;
+                Plugin.KeyRushF5 = false;
+                Plugin.KeyRushFinalizing = false;
+                Plugin.KeyRush99KeyGiven = false;
+                if (Plugin.KeyRushHUD != null) { UnityEngine.Object.Destroy(Plugin.KeyRushHUD); Plugin.KeyRushHUD = null; }
+                Plugin.KeyRushHudComp = null;
+                if (Plugin.KeySpawnFXRoot != null) { UnityEngine.Object.Destroy(Plugin.KeySpawnFXRoot); Plugin.KeySpawnFXRoot = null; }
                 if (!Plugin.MooCreditsPending) return;
                 Plugin.MooCreditsPending = false; 
                 try { AchievementHelper.UnlockAchievement("milk_moocredit"); } catch (System.Exception) { }   
@@ -17270,6 +17629,407 @@ namespace MilkItem
                 if (gf2 != null) { style.font = gf2; style.fontStyle = FontStyle.Bold; }
                 GUI.Label(new Rect(0, 0, Screen.width, Screen.height), "02589", style);
             }
+        }
+    }
+
+    
+    
+    public static class KeyRushSystem
+    {
+        public static void TryCollectKey()
+        {
+            try
+            {
+                if (Plugin.KeyRushFinalizing) return;
+                Plugin.KeyRushCount++;
+                Plugin.SilentLog("[KeyRush] key collected, total=" + Plugin.KeyRushCount);
+                if (Plugin.KeyRushCount >= 4)
+                {
+                    CompleteKeyRush();
+                }
+                else
+                {
+                    ShowKeyHud(Plugin.KeyRushCount);
+                }
+            }
+            catch (System.Exception e) { Plugin.SilentLog("[KeyRush] TryCollectKey error: " + e); }
+        }
+
+        public static void ShowKeyHud(int count)
+        {
+            try
+            {
+                var hud = KeyRushHud.Create();
+                if (hud == null) return;
+                hud.ShowCount(count);
+            }
+            catch (System.Exception e) { Plugin.SilentLog("[KeyRush] ShowKeyHud error: " + e); }
+        }
+
+        public static void CompleteKeyRush()
+        {
+            try
+            {
+                if (Plugin.KeyRushFinalizing) return;
+                Plugin.KeyRushFinalizing = true;
+                Plugin.KeyRushF5 = true;
+                Plugin.KeyRush99KeyGiven = true;
+                Plugin.SilentLog("[KeyRush] All 4 keys collected. 99 key granted; F5 opened as a normal classroom floor.");
+                var p = Singleton<CoreGameManager>.Instance.GetPlayer(0);
+                if (p != null && p.itm != null && Plugin.KeyItemObject != null)
+                {
+                    p.itm.AddItem(Plugin.KeyItemObject);
+                    Plugin.SilentLog("[KeyRush] 99 key added to player inventory.");
+                }
+            }
+            catch (System.Exception e) { Plugin.SilentLog("[KeyRush] CompleteKeyRush error: " + e); }
+        }
+    }
+
+    
+    
+    [HarmonyPatch(typeof(Pickup), "Collect")]
+    public class PatchKeyRushCollect
+    {
+        static bool Prefix(Pickup __instance, int player)
+        {
+            try
+            {
+                if (__instance == null || __instance.item != Plugin.KeyItemObject) return true;
+                if (Plugin.KeyRushFinalizing) return false;
+                
+                if (__instance.item.audPickupOverride == null)
+                    Singleton<CoreGameManager>.Instance.audMan.PlaySingle(__instance.sound);
+                else
+                    Singleton<CoreGameManager>.Instance.audMan.PlaySingle(__instance.item.audPickupOverride);
+                try { __instance.Hide(true); } catch (System.Exception) { }
+                try { __instance.AssignItem(Singleton<CoreGameManager>.Instance.NoneItem); } catch (System.Exception) { }
+                if (Plugin.KeySpawnFXRoot != null)
+                {
+                    try { UnityEngine.Object.Destroy(Plugin.KeySpawnFXRoot); } catch (System.Exception) { }
+                    Plugin.KeySpawnFXRoot = null;
+                }
+                Singleton<CoreGameManager>.Instance.GetHud(player).CloseTooltip();
+                KeyRushSystem.TryCollectKey();
+                return false;
+            }
+            catch (System.Exception) { return true; }
+        }
+    }
+
+    
+    
+    [HarmonyPatch(typeof(EnvironmentController), "SpawnNPCs")]
+    public class PatchKeyRushNoNpcs
+    {
+        static void Prefix(EnvironmentController __instance)
+        {
+            try
+            {
+                if (!Plugin.KeyRushF5) return;
+                if (__instance == null) return;
+                if (__instance.npcsToSpawn != null) __instance.npcsToSpawn.Clear();
+            }
+            catch (System.Exception) { }
+        }
+    }
+
+    
+    
+    [HarmonyPatch(typeof(LevelBuilder), "StartGenerate")]
+    public class PatchKeyRushF5Setup
+    {
+        static void Prefix(LevelBuilder __instance)
+        {
+            try
+            {
+                if (!Plugin.KeyRushF5 || __instance == null || __instance.scene == null) return;
+                if (__instance.scene.levelNo != 4) return;
+                var ld = __instance.ld;
+                if (ld == null) return;
+                Plugin.SilentLog("[KeyRush] F5 setup: big classroom-only floor.");
+
+                
+                try
+                {
+                    ld.minSize = new IntVector2(32, 32);
+                    ld.maxSize = new IntVector2(40, 40);
+                    ld.outerEdgeBuffer = 5;
+                    ld.minPlots = 3;
+                    ld.maxPlots = 4;
+                }
+                catch (System.Exception) { }
+
+                
+                try
+                {
+                    var schoolGroups = Plugin.GetSchoolRoomGroups();
+                    if (schoolGroups != null && schoolGroups.Length > 0)
+                    {
+                        var classGroups = new System.Collections.Generic.List<RoomGroup>();
+                        foreach (var rg in schoolGroups)
+                        {
+                            if (rg == null) continue;
+                            string gn = rg.name != null ? rg.name.ToLowerInvariant() : "";
+                            if (!(gn.Contains("class") || gn.Contains("lesson") || gn.Contains("教室"))) continue;
+                            RoomGroup c = new RoomGroup();
+                            var rgt = rg.GetType();
+                            foreach (var fld in rgt.GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance))
+                            {
+                                try { fld.SetValue(c, fld.GetValue(rg)); } catch (System.Exception) { }
+                            }
+                            if (c.minRooms < 5) c.minRooms = 5;
+                            if (c.maxRooms < 9) c.maxRooms = 9;
+                            classGroups.Add(c);
+                        }
+                        if (classGroups.Count > 0)
+                            ld.roomGroup = classGroups;
+                    }
+                }
+                catch (System.Exception) { }
+
+                
+                try
+                {
+                    Plugin.Inject99RoomIntoPool(ld);
+                    if (Plugin.Loaded99Room != null && Plugin.Loaded99Room.selection != null)
+                    {
+                        var keep = new System.Collections.Generic.List<WeightedRoomAsset>();
+                        foreach (var w in ld.potentialSpecialRooms)
+                        {
+                            if (w == null) continue;
+                            if (w.selection == Plugin.Loaded99Room.selection) keep.Add(w);
+                        }
+                        if (keep.Count > 0) ld.potentialSpecialRooms = keep.ToArray();
+                    }
+                }
+                catch (System.Exception) { }
+
+                
+                try
+                {
+                    if (ld.randomEvents != null) ld.randomEvents.Clear();
+                    ld.minEvents = 0;
+                    ld.maxEvents = 0;
+                }
+                catch (System.Exception) { }
+
+                
+                if (!Plugin.KeyRush99KeyGiven)
+                {
+                    Plugin.KeyRush99KeyGiven = true;
+                    try { __instance.StartCoroutine(Give99KeyWhenReady(__instance)); } catch (System.Exception) { }
+                }
+            }
+            catch (System.Exception) { }
+        }
+
+        private static System.Collections.IEnumerator Give99KeyWhenReady(LevelBuilder lb)
+        {
+            float wait = 0f;
+            while (wait < 60f)
+            {
+                if (lb != null && !lb.levelInProgress) break;
+                wait += Time.deltaTime;
+                yield return null;
+            }
+            wait = 0f;
+            while (wait < 30f)
+            {
+                try
+                {
+                    var p = Singleton<CoreGameManager>.Instance.GetPlayer(0);
+                    if (p != null && p.itm != null && Plugin.KeyItemObject != null)
+                    {
+                        p.itm.AddItem(Plugin.KeyItemObject);
+                        Plugin.SilentLog("[KeyRush] 99 key added to inventory on F5.");
+                        yield break;
+                    }
+                }
+                catch (System.Exception) { }
+                wait += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
+
+    
+    
+    [HarmonyPatch(typeof(BaseGameManager), "LoadNextLevel")]
+    public class PatchKeyRushF5End
+    {
+        static bool Prefix(BaseGameManager __instance)
+        {
+            try
+            {
+                var cgm = Singleton<CoreGameManager>.Instance;
+                if (cgm != null && cgm.sceneObject != null && cgm.sceneObject.levelNo == 4 && Plugin.KeyRushF5)
+                {
+                    Plugin.SilentLog("[KeyRush] F5 completed; triggering ending credits.");
+                    Plugin.MooCreditsPending = true;
+                    Plugin.KeyRushF5 = false;
+                    cgm.ReturnToMenu();
+                    return false;
+                }
+            }
+            catch (System.Exception) { }
+            return true;
+        }
+    }
+
+    
+    
+    public class KeySpawnFXController : MonoBehaviour
+    {
+        public EnvironmentController ec;
+        public ParticleSystemRenderer psr;
+        public int floorNo = -1;
+
+        private void Update()
+        {
+            try
+            {
+                if (Plugin.KeySpawnFXRoot != gameObject || ec == null || !ec.gameObject.activeInHierarchy)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+                var cgm = Singleton<CoreGameManager>.Instance;
+                if (cgm == null || cgm.sceneObject == null || cgm.sceneObject.levelNo != floorNo)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+                if (psr != null)
+                {
+                    try
+                    {
+                        Cell cell = ec.CellFromPosition(transform.position);
+                        psr.enabled = cell != null && cell.HasChunk && cell.Chunk.Rendering;
+                    }
+                    catch (System.Exception) { psr.enabled = true; }
+                }
+            }
+            catch (System.Exception) { }
+        }
+
+        private void OnDestroy()
+        {
+            try
+            {
+                if (Plugin.KeySpawnFXRoot == gameObject) Plugin.KeySpawnFXRoot = null;
+            }
+            catch (System.Exception) { }
+        }
+    }
+
+    
+    public class KeyRushHud : MonoBehaviour
+    {
+        public TextMeshProUGUI text;
+        private Canvas canvas;
+        private bool finalized = false;
+
+        public static KeyRushHud Create()
+        {
+            try
+            {
+                if (Plugin.KeyRushHUD != null) { UnityEngine.Object.Destroy(Plugin.KeyRushHUD); Plugin.KeyRushHUD = null; }
+                GameObject root = new GameObject("KeyRushHUD");
+                Canvas cv = root.AddComponent<Canvas>();
+                cv.renderMode = RenderMode.ScreenSpaceOverlay;
+                cv.sortingOrder = 300;
+                root.AddComponent<CanvasScaler>();
+                root.AddComponent<GraphicRaycaster>();
+                var hud = root.AddComponent<KeyRushHud>();
+                hud.canvas = cv;
+
+                TextMeshProUGUI src = null;
+                try
+                {
+                    var hudMgr = Singleton<HudManager>.Instance;
+                    if (hudMgr != null)
+                    {
+                        var fld = AccessTools.DeclaredField(typeof(HudManager), "textBox");
+                        if (fld != null)
+                        {
+                            var arr = fld.GetValue(hudMgr) as TMPro.TMP_Text[];
+                            if (arr != null && arr.Length > 0) src = arr[0] as TextMeshProUGUI;
+                        }
+                    }
+                }
+                catch (System.Exception) { }
+                if (src == null)
+                {
+                    try
+                    {
+                        var all = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
+                        if (all != null && all.Length > 0) src = all[0];
+                    }
+                    catch (System.Exception) { }
+                }
+
+                GameObject txtGo = new GameObject("KeyRushText");
+                txtGo.transform.SetParent(root.transform, false);
+                var rt = txtGo.AddComponent<RectTransform>();
+                rt.anchorMin = new Vector2(1f, 0f);
+                rt.anchorMax = new Vector2(1f, 0f);
+                rt.pivot = new Vector2(1f, 0f);
+                rt.anchoredPosition = new Vector2(-40f, 36f);
+                rt.sizeDelta = new Vector2(240f, 60f);
+                var t = txtGo.AddComponent<TextMeshProUGUI>();
+                if (src != null)
+                {
+                    try { t.font = src.font; } catch (System.Exception) { }
+                    try { t.fontSharedMaterial = src.fontSharedMaterial; } catch (System.Exception) { }
+                }
+                t.fontSize = 48f;
+                t.fontStyle = FontStyles.Bold;
+                t.color = new Color(0.7f, 0.7f, 0.7f, 0f);
+                t.alignment = TextAlignmentOptions.BottomRight;
+                t.text = "";
+                hud.text = t;
+                Plugin.KeyRushHUD = root;
+                Plugin.KeyRushHudComp = hud;
+                return hud;
+            }
+            catch (System.Exception) { return null; }
+        }
+
+        public void ShowCount(int count)
+        {
+            try
+            {
+                StopAllCoroutines();
+                text.text = count + "/4";
+                StartCoroutine(CountAnim());
+            }
+            catch (System.Exception) { }
+        }
+
+        private System.Collections.IEnumerator CountAnim()
+        {
+            Color c = text.color;
+            float t = 0f;
+            while (t < 0.12f) { t += Time.deltaTime; c.a = Mathf.Lerp(0f, 1f, t / 0.12f); text.color = c; yield return null; }
+            c.a = 1f; text.color = c;
+            t = 0f;
+            while (t < 0.6f) { t += Time.deltaTime; yield return null; }
+            t = 0f;
+            while (t < 0.3f) { t += Time.deltaTime; c.a = Mathf.Lerp(1f, 0f, t / 0.3f); text.color = c; yield return null; }
+            c.a = 0f; text.color = c;
+        }
+
+        public void Finale()
+        {
+            try
+            {
+                if (finalized) return;
+                finalized = true;
+                StopAllCoroutines();
+                text.text = "4/4";
+            }
+            catch (System.Exception) { }
         }
     }
 }

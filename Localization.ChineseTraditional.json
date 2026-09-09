@@ -513,6 +513,50 @@
       "value": "蘋果牛奶\n一瓶蘋果味牛奶。\n帶著它，Baldi 可能會搶走它\n而不是結束你的遊戲！"
     },
     {
+      "key": "ITM_BullyMilk",
+      "value": "校霸牛奶"
+    },
+    {
+      "key": "ITM_BullyMilk_Desc",
+      "value": "校霸牛奶\n一瓶學校裡最凶的牛奶。\n喝下後無敵20秒，並把所有NPC震開，\n但效果結束後會隨機沒收你包裡的一件物品。"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk",
+      "value": "套娃牛奶 (3)"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk2",
+      "value": "套娃牛奶 (2)"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk1",
+      "value": "套娃牛奶 (1)"
+    },
+    {
+      "key": "ITM_MatryoshkaMilk_Desc",
+      "value": "套娃牛奶\n一個瓶子裡裝了三次牛奶。\n第一次是超級強化（清除事件+150%體力），\n第二次是普通牛奶，第三次只剩一半體力。"
+    },
+    {
+      "key": "ITM_MilkCannon",
+      "value": "牛奶砲 (4)"
+    },
+    {
+      "key": "ITM_MilkCannon3",
+      "value": "牛奶砲 (3)"
+    },
+    {
+      "key": "ITM_MilkCannon2",
+      "value": "牛奶砲 (2)"
+    },
+    {
+      "key": "ITM_MilkCannon1",
+      "value": "牛奶砲 (1)"
+    },
+    {
+      "key": "ITM_MilkCannon_Desc",
+      "value": "牛奶炮\n有四發彈藥的牛奶炮。每次發射噴出\n一團濃縮牛奶把NPC擊退一段距離，\n並恢復50%體力。"
+    },
+    {
       "key": "ITM_ReverseMilk",
       "value": "反轉牛奶"
     },
@@ -679,6 +723,14 @@
     {
       "key": "Ed_Tool_activity_MilkMachine_Desc",
       "value": "投入三個空桶，\n換出一本筆記本！"
+    },
+    {
+      "key": "Ed_Tool_activity_QuizMachine_Title",
+      "value": "答題牛奶機"
+    },
+    {
+      "key": "Ed_Tool_activity_QuizMachine_Desc",
+      "value": "靠近並回答問題！\n答對可獲得額外 YTP！"
     },
     {
       "key": "Ed_Tool_object_RandomMilkVendingMachine_Title",
@@ -883,6 +935,50 @@
     {
       "key": "Mu_Tip_9",
       "value": "適量飲用。沒人喜歡被打翻的牛奶。"
+    },
+    {
+      "key": "Ed_RandomEvent_milkflood",
+      "value": "牛奶潮\n牛奶從天上傾瀉而下！60秒內\n120瓶牛奶在你周圍掉落。\n某個教務主任正在盯著你……"
+    },
+    {
+      "key": "Ed_RandomEvent_milkstampede",
+      "value": "波蘭牛踩踏\n幾隻憤怒的踩踏乳牛出現在走廊裡。\n牠們橫衝直撞，碰到就會把你（和NPC）\n撞飛。（僅在本層生成前生效）"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_FakeMilk_Desc",
+      "value": "喝下後清除所有效果並恢復\n6-15體力！（結果可能因人而異）"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_BullyMilk_Desc",
+      "value": "喝下後無敵20秒，並把所有NPC震開，\n但效果結束後會沒收你包裡的一件物品"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MatryoshkaMilk_Desc",
+      "value": "一個瓶子裡裝了三次牛奶。\n第一次超級強化（清除事件+150%體力），\n第二次普通，第三次只剩一半體力"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MatryoshkaMilk2_Desc",
+      "value": "這瓶還剩兩次。\n下一次回滿體力，\n最後一次只剩一半體力"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MatryoshkaMilk1_Desc",
+      "value": "這瓶還剩一次。\n只能恢復一半體力"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon_Desc",
+      "value": "有四發彈藥的牛奶砲。每次發射\n噴出一團濃縮牛奶把NPC擊退，\n並恢復50%體力"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon3_Desc",
+      "value": "還剩三發彈藥的牛奶砲。\n每次發射擊退NPC並恢復50%體力"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon2_Desc",
+      "value": "還剩兩發彈藥的牛奶砲。\n每次發射擊退NPC並恢復50%體力"
+    },
+    {
+      "key": "Ed_Tool_item_ITM_MilkCannon1_Desc",
+      "value": "只剩一發彈藥的牛奶砲。\n發射後擊退NPC並恢復50%體力"
     }
   ]
 }

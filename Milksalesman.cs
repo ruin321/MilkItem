@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MTM101BaldAPI;
@@ -29,7 +29,6 @@ namespace MilkItem
         private const int Price150 = 150;
         private const int Price100 = 100;
         private const float WaitBuffer = 0.25f;      
-        private const float TurnSmoothSpeed = 5f;    
 
         
         private Sprite idleSprite;
@@ -240,9 +239,22 @@ namespace MilkItem
             
             
             
-            if (dist <= OfferRange && IsPlayerClear(player))
+            if (dist <= OfferRange && IsPlayerClear(player) && !SquishedNow())
             {
                 base.behaviorStateMachine.ChangeState(new MilkSalesman_SellState(this));
+            }
+        }
+
+        private bool SquishedNow()
+        {
+            try
+            {
+                Entity ent = Entity;
+                return ent != null && ent.Squished;
+            }
+            catch (System.Exception)
+            {
+                return false;
             }
         }
 
@@ -315,6 +327,7 @@ namespace MilkItem
             
             talking = true;
             SetFrozen(player, true);
+            LockCamera(player);
             AudioClip hello = EnsureClip(ref helloClip, "Salesman_Hello.wav");
             Speak(HelloLine, hello);
             float helloLen = (hello != null ? hello.length : 1.9f);
@@ -323,10 +336,15 @@ namespace MilkItem
             {
                 t += Time.deltaTime;
                 FacePlayerToMe(player);
+                if (SquishedNow())
+                {
+                    FinishSell();
+                    yield break;
+                }
                 yield return null;
             }
 
-            
+            UnlockCamera();
             SetFrozen(player, false);
             talking = false;
 
@@ -336,6 +354,11 @@ namespace MilkItem
             AudioClip cost = EnsureClip(ref costClip, "Salesman_Cost.wav");
             Speak(CostLine, cost);
             yield return StayWait(player, (cost != null ? cost.length : 1.4f) + WaitBuffer);
+            if (SquishedNow())
+            {
+                FinishSell();
+                yield break;
+            }
             if (playerLeft)
             {
                 StartCoroutine(FinishWalkAway(player));
@@ -363,6 +386,11 @@ namespace MilkItem
             while (confirmTimer < ConfirmTimeout)
             {
                 confirmTimer += Time.deltaTime;
+                if (SquishedNow())
+                {
+                    FinishSell();
+                    yield break;
+                }
                 if (IsGone(player))
                 {
                     StartCoroutine(FinishWalkAway(player));
@@ -384,6 +412,11 @@ namespace MilkItem
                 AudioClip ns = EnsureClip(ref noSpaceClip, "Salesman_NoSpace.wav");
                 if (ns != null) Speak(NoSpaceLine, ns);
                 yield return StayWait(player, (ns != null ? ns.length : 1.6f) + WaitBuffer);
+                if (SquishedNow())
+                {
+                    FinishSell();
+                    yield break;
+                }
                 talking = false;
                 SetSprite(idleSprite);
                 FinishSell();
@@ -408,6 +441,11 @@ namespace MilkItem
                 AudioClip nm = EnsureClip(ref nomoneyClip, "Salesman_NoMoney.wav");
                 Speak(NoMoneyLine, nm);
                 yield return StayWait(player, (nm != null ? nm.length : 2.6f) + WaitBuffer);
+                if (SquishedNow())
+                {
+                    FinishSell();
+                    yield break;
+                }
                 talking = false;
 
                 AudioClip fg = EnsureClip(ref freegiveClip, "Salesman_FreeGive.wav");
@@ -431,12 +469,49 @@ namespace MilkItem
             dir.y = 0f;
             if (dir.sqrMagnitude < 0.0001f) return;
             Quaternion target = Quaternion.LookRotation(dir.normalized);
-            float k = Mathf.Clamp01(Time.deltaTime * TurnSmoothSpeed);
-            try { player.transform.rotation = Quaternion.Slerp(player.transform.rotation, target, k); } catch (System.Exception) { }          
+
+
+
+
+            try { player.transform.rotation = target; } catch (System.Exception) { }
             if (player.cameraBase != null)
             {
-                try { player.cameraBase.rotation = Quaternion.Slerp(player.cameraBase.rotation, target, k); } catch (System.Exception) { }    
+                try { player.cameraBase.rotation = target; } catch (System.Exception) { }
             }
+        }
+
+        
+        private GameCamera _lockedCam;
+        private bool _camWasControllable;
+
+        
+        private void LockCamera(PlayerManager player)
+        {
+            try
+            {
+                GameCamera cam = Singleton<CoreGameManager>.Instance?.GetCamera(player.playerNumber);
+                if (cam == null) return;
+                _camWasControllable = cam.Controllable;
+                if (_camWasControllable) cam.SetControllable(false);
+                _lockedCam = cam;
+            }
+            catch (System.Exception)
+            {
+                _lockedCam = null;
+            }
+        }
+
+        
+        private void UnlockCamera()
+        {
+            try
+            {
+                if (_lockedCam != null && _camWasControllable) _lockedCam.SetControllable(true);
+            }
+            catch (System.Exception)
+            {
+            }
+            _lockedCam = null;
         }
 
         
@@ -543,6 +618,7 @@ namespace MilkItem
         private IEnumerator FinishWalkAway(PlayerManager player)
         {
             talking = false;
+            UnlockCamera();
             SetFrozen(player, false);
             SetSprite(noSprite);
             AudioClip w = EnsureClip(ref walkawayClip, "Salesman_WalkAway.wav");
@@ -557,16 +633,12 @@ namespace MilkItem
         
         private void RestorePlayerRotation()
         {
-            try
-            {
-                if (_preSellPlayerRot.HasValue && sellPlayer != null)
-                {
-                    sellPlayer.transform.rotation = _preSellPlayerRot.Value;
-                    if (_preSellCameraRot.HasValue && sellPlayer.cameraBase != null)
-                        sellPlayer.cameraBase.rotation = _preSellCameraRot.Value;
-                }
-            }
-            catch { }
+
+
+
+
+
+
             _preSellPlayerRot = null;
             _preSellCameraRot = null;
         }
@@ -575,6 +647,7 @@ namespace MilkItem
         {
             try
             {
+                UnlockCamera();
                 RestorePlayerRotation();
                 talking = false;
                 SetFrozen(sellPlayer, false);
@@ -584,6 +657,7 @@ namespace MilkItem
             }
             catch (System.Exception )
             {
+                UnlockCamera();
                 RestorePlayerRotation();
                 talking = false;
                 SetFrozen(sellPlayer, false);

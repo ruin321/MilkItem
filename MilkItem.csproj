@@ -35,6 +35,9 @@
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>$(GameRoot)/BALDI_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
@@ -82,6 +85,12 @@
     <Compile Remove="_nocomment_bak/**/*.cs" />
     <Compile Remove="_fastloader_src/**/*.cs" />
     <Compile Remove="_fastloader_decomp/**/*.cs" />
+    <Compile Remove="_bbpc_decomp/**/*.cs" />
+    <Compile Remove="_milk_decomp/**/*.cs" />
+    <Compile Remove="_decomp_qop/**/*.cs" />
+    <Compile Remove="_decomp_shaker/**/*.cs" />
+    <Compile Remove="BugRevival/**/*.cs" />
+    <Compile Remove="Espace/**/*.cs" />
     <None Remove="*.logbak" />
     <None Remove="README.md" />
     <None Remove="LICENSE" />
